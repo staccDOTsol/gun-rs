@@ -13,7 +13,7 @@ The [Internet Archive](https://news.ycombinator.com/item?id=17685682), [HackerNo
  + Graph data let's you use key/value, tables, documents, videos, & more!
  + Local-first, offline, and decentralized with end-to-end encryption.
 
-Decentralized alternatives to [Zoom](https://www.zdnet.com/article/era-hatches-meething-an-open-source-browser-based-video-conferencing-system/), [Reddit](https://notabug.io/t/whatever/comments/36588a16b9008da4e3f15663c2225e949eca4a15/gpu-bot-test), [Instagram](https://iris.to/), [Slack](https://iris.to/), [YouTube](https://d.tube/), [Stripe](https://twitter.com/marknadal/status/1422717427427647489), [Wikipedia](https://news.ycombinator.com/item?id=17685682), Facebook [Horizon](https://twitter.com/marknadal/status/1424476179189305347) and more have already pushed terabytes of daily P2P traffic on GUN. We are a [friendly community](http://chat.gun.eco/) creating a [free fun future for freedom](https://youtu.be/1HJdrBk3BlE):
+Decentralized alternatives to [Zoom](https://www.zdnet.com/article/era-hatches-meething-an-open-source-browser-based-video-conferencing-system/), [Reddit](https://notabug.io/t/whatever/comments/36588a16b9008da4e3f15663c2225e949eca4a15/gpu-bot-test), [Instagram](https://www.autist.design/), [Slack](https://www.autist.design/), [YouTube](https://d.tube/), [Stripe](https://twitter.com/marknadal/status/1422717427427647489), [Wikipedia](https://news.ycombinator.com/item?id=17685682), Facebook [Horizon](https://twitter.com/marknadal/status/1424476179189305347) and more have already pushed terabytes of daily P2P traffic on GUN. We are a [friendly community](http://chat.gun.eco/) creating a [free fun future for freedom](https://youtu.be/1HJdrBk3BlE):
 
 <table>
 <tr>
