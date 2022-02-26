@@ -23,7 +23,7 @@ impl NetworkAdapter for Multicast {
         Multicast { node, socket }
     }
 
-    async fn start(&self) { // "wss://gun-us.herokuapp.com/gun"
+    async fn start(&self) { // "wss://autist.design/gun"
         debug!("Syncing over multicast\n");
 
         let mut rx = self.node.get_outgoing_msg_receiver();

@@ -66,7 +66,7 @@ impl NetworkAdapter for WebsocketClient {
 }
 
 async fn user_connected(mut node: Node, ws: WebSocketStream<tokio_tungstenite::MaybeTlsStream<tokio::net::TcpStream>>, users: Users) { // TODO copied from server, need similar here.
-    let my_id = "wss://gun-us.herokuapp.com/gun".to_string();
+    let my_id = "wss://autist.design/gun".to_string();
 
     debug!("outgoing websocket opened: {}", my_id);
 
