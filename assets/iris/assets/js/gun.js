@@ -1,1 +1,2216 @@
-!function(){function t(n,e){function o(t){return t.split("/").slice(-1).toString().replace(".js","")}return e?require(n):n.slice?t[o(n)]:function(e,i){n(e={exports:{}}),t[o(i)]=e.exports}}if("undefined"!=typeof module)var n=module;t((function(t){var n={fn:{is:function(t){return!!t&&"function"==typeof t}}};n.bi={is:function(t){return t instanceof Boolean||"boolean"==typeof t}},n.num={is:function(t){return!e(t)&&(t-parseFloat(t)+1>=0||1/0===t||-1/0===t)}},n.text={is:function(t){return"string"==typeof t}},n.text.ify=function(t){return n.text.is(t)?t:"undefined"!=typeof JSON?JSON.stringify(t):t&&t.toString?t.toString():t},n.text.random=function(t,n){var e="";for(t=t||24,n=n||"0123456789ABCDEFGHIJKLMNOPQRSTUVWXZabcdefghijklmnopqrstuvwxyz";t>0;)e+=n.charAt(Math.floor(Math.random()*n.length)),t--;return e},n.text.match=function(t,n){var e,o;return"string"==typeof t&&("string"==typeof n&&(n={"=":n}),t===(e=(n=n||{})["="]||n["*"]||n[">"]||n["<"])||o===n["="]&&(t.slice(0,((e=n["*"]||n[">"]||n["<"])||"").length)===e||o===n["*"]&&(o!==n[">"]&&o!==n["<"]?t>=n[">"]&&t<=n["<"]:o!==n[">"]&&t>=n[">"]||o!==n["<"]&&t<=n["<"])))},n.text.hash=function(t,n){if("string"==typeof t){if(n=n||0,!t.length)return n;for(var e=0,o=t.length;e<o;++e)n=(n<<5)-n+t.charCodeAt(e),n|=0;return n}},n.list={is:function(t){return t instanceof Array}},n.list.slit=Array.prototype.slice,n.list.sort=function(t){return function(n,e){return n&&e?(n=n[t])<(e=e[t])?-1:n>e?1:0:0}},n.list.map=function(t,n,e){return a(t,n,e)},n.list.index=1,n.obj={is:function(t){return!!t&&(t instanceof Object&&t.constructor===Object||"Object"===Object.prototype.toString.call(t).match(/^\[object (\w+)\]$/)[1])}},n.obj.put=function(t,n,e){return(t||{})[n]=e,t},n.obj.has=function(t,n){return t&&Object.prototype.hasOwnProperty.call(t,n)},n.obj.del=function(t,n){if(t)return t[n]=null,delete t[n],t},n.obj.as=function(t,n,e,o){return t[n]=t[n]||(o===e?{}:e)},n.obj.ify=function(t){if(i(t))return t;try{t=JSON.parse(t)}catch(n){t={}}return t},function(){function t(t,n){r(this,n)&&undefined!==this[n]||(this[n]=t)}n.obj.to=function(n,e){return a(n,t,e=e||{}),e}}(),n.obj.copy=function(t){return t?JSON.parse(JSON.stringify(t)):t},function(){function t(t,n){var e=this.n;if(!e||!(n===e||i(e)&&r(e,n)))return undefined!==n||void 0}n.obj.empty=function(n,e){return!n||!a(n,t,{n:e})}}(),function(){function t(n,e){2!==arguments.length?(t.r=t.r||[]).push(n):(t.r=t.r||{})[n]=e}var o,a=Object.keys;Object.keys=Object.keys||function(t){return o(t,(function(t,n,e){e(n)}))},n.obj.map=o=function(o,u,s){var f,c,l,p,h,d=0,g="function"==typeof u;if(t.r=f,a&&i(o)&&(p=a(o),h=!0),s=s||{},e(o)||p)for(c=(p||o).length;d<c;d++){var v=d+n.list.index;if(g){if((l=h?u.call(s,o[p[d]],p[d],t):u.call(s,o[d],v,t))!==f)return l}else if(u===o[h?p[d]:d])return p?p[d]:v}else for(d in o)if(g){if(r(o,d)&&(l=s?u.call(s,o[d],d,t):u(o[d],d,t))!==f)return l}else if(u===o[d])return d;return g?t.r:n.list.index?0:-1}}(),n.time={},n.time.is=function(t){return t?t instanceof Date:+(new Date).getTime()};var e=n.list.is,o=n.obj,i=o.is,r=o.has,a=o.map;t.exports=n}))(t,"./type"),t((function(t){t.exports=function t(n,e,o){if(!n)return{to:t};n=(this.tag||(this.tag={}))[n]||(this.tag[n]={tag:n,to:t._={next:function(t){var n;(n=this.to)&&n.next(t)}}});if("function"==typeof e){var i={off:t.off||(t.off=function(){if(this.next===t._.next)return!0;this===this.the.last&&(this.the.last=this.back),this.to.back=this.back,this.next=t._.next,this.back.to=this.to,this.the.last===this.the&&delete this.on.tag[this.the.tag]}),to:t._,next:e,the:n,on:this,as:o};return(i.back=n.last||n).to=i,n.last=i}return(n=n.to)&&undefined!==e&&n.next(e),n}}))(t,"./onto"),t((function(t){var n="undefined"!=typeof setImmediate?setImmediate:setTimeout,e=[];t.exports=setTimeout.puff=function(t){e.length?e.push(t):(e=[t],n((function t(o){o=o||+new Date;for(var i,r=0;r<9&&(i=e[r++]);)i();if(console.STAT&&console.STAT(o,+new Date-o,"puff"),i&&!(+new Date-o))return t(o);(e=e.slice(r)).length&&n(t,0)}),0))}}))(t,"./puff"),t((function(t){if("undefined"==typeof JSON)throw new Error("JSON is not included in this browser. Please load it first: ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js");var n=JSON.stringify;t.exports=function(t,e,o,i,r){if(t<e)return{defer:!0};if(e<o)return{historical:!0};if(o<e)return{converge:!0,incoming:!0};if(e===o){if((i=n(i)||"")===(r=n(r)||""))return{state:!0};if(i<r)return{converge:!0,current:!0};if(r<i)return{converge:!0,incoming:!0}}return{err:"Invalid CRDT Data: "+i+" to "+r+" at "+e+" to "+o+"!"}}}))(t,"./HAM"),t((function(n){var e=t("./type"),o={is:function(t){return undefined!==t&&(null===t||t!==1/0&&(!!(u(t)||r(t)||a(t))||(o.link.is(t)||!1)))}};o.link=o.rel={_:"#"},function(){function t(t,n){var e=this;return e.id?e.id=!1:n==i&&u(t)?void(e.id=t):e.id=!1}o.link.is=function(n){if(n&&n[i]&&!n._&&f(n)){var e={};if(l(n,t,e),e.id)return e.id}return!1}}(),o.link.ify=function(t){return c({},i,t)},e.obj.has._=".";var i=o.link._,r=e.bi.is,a=e.num.is,u=e.text.is,s=e.obj,f=s.is,c=s.put,l=s.map;n.exports=o}))(t,"./val"),t((function(n){var e=t("./type"),o=t("./val"),i={_:"_",soul:function(t,n){return t&&t._&&t._[n||c]}};i.soul.ify=function(t,n){return n="string"==typeof n?{soul:n}:n||{},(t=t||{})._=t._||{},t._[c]=n.soul||t._[c]||f(),t},i.soul._=o.link._,function(){function t(t,n){if(n!==i._)return!o.is(t)||void(this.cb&&this.cb.call(this.as,t,n,this.n,this.s))}i.is=function(n,e,o){var r;return!!a(n)&&(!!(r=i.soul(n))&&!s(n,t,{as:o,cb:e,s:r,n:n}))}}(),function(){function t(t,n){var e,i=this.o;i.map?undefined===(e=i.map.call(this.as,t,""+n,i.node))?u(i.node,n):i.node&&(i.node[n]=e):o.is(t)&&(i.node[n]=t)}i.ify=function(n,e,o){return e?"string"==typeof e?e={soul:e}:"function"==typeof e&&(e={map:e}):e={},e.map&&(e.node=e.map.call(o,n,undefined,e.node||{})),(e.node=i.soul.ify(e.node||{},e))&&s(n,t,{o:e,as:o}),e.node}}();var r=e.obj,a=r.is,u=r.del,s=r.map,f=e.text.random,c=i.soul._;n.exports=i}))(t,"./node"),t((function(n){function e(){var t;return t=+new Date,r<t?(a=0,r=t+e.drift):r=t+(a+=1)/u+e.drift}var o=t("./type"),i=t("./node"),r=-1/0,a=0,u=1e3,s="undefined"!=typeof performance&&(performance.timing&&performance),f=(s&&s.timing&&s.timing.navigationStart||(s=!1),e._=">");e.drift=0,e.is=function(t,n,e){var o=n&&t&&t[b]&&t[b][f]||e;if(o)return m(o=o[n])?o:-1/0},e.lex=function(){return e().toString(36).replace(".","")},e.ify=function(t,n,e,o,r){if(!t||!t[b]){if(!r)return;t=i.soul.ify(t,r)}var a=p(t[b],f);return c!==n&&n!==b&&(m(e)&&(a[n]=e),c!==o&&(t[n]=o)),t},e.to=function(t,n,o){var r=(t||{})[n];return d(r)&&(r=v(r)),e.ify(o,n,e.is(t,n),r,i.soul(t))},function(){function t(t,n){b!==n&&e.ify(this.o,n,this.s)}e.map=function(n,o,i){var r,a=d(a=n||o)?a:null;return n=k(n=n||o)?n:null,a&&!n?(o=m(o)?o:e(),a[b]=a[b]||{},g(a,t,{o:a,s:o}),a):(i=i||d(o)?o:r,o=m(o)?o:e(),function(e,a,u,s){if(!n)return t.call({o:u,s:o},e,a),e;n.call(i||this||{},e,a,u,s),h(u,a)&&r===u[a]||t.call({o:u,s:o},e,a)})}}();var c,l=o.obj,p=l.as,h=l.has,d=l.is,g=l.map,v=l.copy,m=o.num.is,k=o.fn.is,b=i._;n.exports=e}))(t,"./state"),t((function(n){var e=t("./type"),o=t("./val"),i=t("./node"),r={};!function(){function t(t,e){if(!t||e!==i.soul(t)||!i.is(t,this.fn,this.as))return!0;this.cb&&(n.n=t,this.cb.call(n.as=this.as,t,e,n))}function n(t){t&&i.is(n.n,t,n.as)}r.is=function(n,e,o,i){return!(!n||!s(n)||l(n))&&!h(n,t,{cb:e,fn:o,as:i})}}(),function(){function t(t,e){var r;return(r=function(t,n){var e,o=t.seen,i=o.length;for(;i--;)if(n.obj===(e=o[i]).obj)return e;o.push(n)}(t,e))?r:(e.env=t,e.soul=u,i.ify(e.obj,n,e)&&(e.link=e.link||o.link.ify(i.soul(e.node)),e.obj!==t.shell&&(t.graph[o.link.is(e.link)]=e.node)),e)}function n(n,e,r){var u,s,p=this,h=p.env;if(i._===e&&c(n,o.link._))return r._;if(u=l(n,e,r,p,h)){if(e||(p.node=p.node||r||{},c(n,i._)&&i.soul(n)&&(p.node._=d(n._)),p.node=i.soul.ify(p.node,o.link.is(p.link)),p.link=p.link||o.link.ify(i.soul(p.node))),(s=h.map)&&(s.call(h.as||{},n,e,r,p),c(r,e))){if(a===(n=r[e]))return void f(r,e);if(!(u=l(n,e,r,p,h)))return}if(!e)return p.node;if(!0===u)return n;if((s=t(h,{obj:n,path:p.path.concat(e)})).node)return s.link}}function u(t){var n=this,e=o.link.is(n.link),r=n.env.graph;n.link=n.link||o.link.ify(t),n.link[o.link._]=t,n.node&&n.node[i._]&&(n.node[i._][o.link._]=t),c(r,e)&&(r[t]=r[e],f(r,e))}function l(t,n,i,r,a){var u;return!!o.is(t)||(s(t)?1:(u=a.invalid)?l(t=u.call(a.as||{},t,n,i),n,i,r,a):(a.err="Invalid value at '"+r.path.concat(n).join(".")+"'!",void(e.list.is(t)&&(a.err+=" Use `.set(item)` instead of an Array."))))}r.ify=function(n,e,i){var r={path:[],obj:n};return e?"string"==typeof e?e={soul:e}:"function"==typeof e&&(e.map=e):e={},"string"==typeof i&&(e.soul=e.soul||i,i=a),e.soul&&(r.link=o.link.ify(e.soul)),e.shell=(i||{}).shell,e.graph=e.graph||{},e.seen=e.seen||[],e.as=e.as||i,t(e,r),e.root=r.node,e.graph}}(),r.node=function(t){var n=i.soul(t);if(n)return p({},n,t)},function(){function t(t,n){var e,a;if(i._!==n)this.obj[n]=(e=o.link.is(t))?(a=this.opt.seen[e])?a:this.opt.seen[e]=r.to(this.graph,e,this.opt):t;else{if(l(t,o.link._))return;this.obj[n]=d(t)}}r.to=function(n,e,o){if(n){var i={};return h(n[e],t,{obj:i,graph:n,opt:o=o||{seen:{}}}),i}}}();var a,u=e.obj,s=u.is,f=u.del,c=u.has,l=u.empty,p=u.put,h=u.map,d=u.copy;n.exports=r}))(t,"./graph"),t((function(n){t("./onto"),n.exports=function(t,n){if(this.on){if("function"!=typeof t){if(!t||!n)return;var e=(this.tag||"")[o=t["#"]||t];if(!e)return;return e=this.on(o,n),clearTimeout(e.err),!0}var o=n&&n["#"]||Math.random().toString(36).slice(2);if(!t)return o;var i=this.on(o,t,n);return i.err=i.err||setTimeout((function(){i.next({err:"Error: No ACK yet.",lack:!0}),i.off()}),(this.opt||{}).lack||9e3),o}}}))(t,"./ask"),t((function(n){var e=t("./type");n.exports=function(t){var n={s:{}},o=n.s;t=t||{max:1e3,age:27e3},n.check=function(t){return!!o[t]&&i(t)};var i=n.track=function(e){var i=o[e]||(o[e]={});return i.was=+new Date,n.to||(n.to=setTimeout(n.drop,t.age+9)),i};return n.drop=function(i){var r=+new Date;e.obj.map(o,(function(n,e){n&&(i||t.age)>r-n.was||delete o[e]})),n.to=null,console.STAT&&(i=+new Date-r)>9&&console.STAT(r,i,"dup drop")},n}}))(t,"./dup"),t((function(e){function o(t){return t instanceof o?(this._={$:this}).$:this instanceof o?o.create(this._={$:this,opt:t}):new o(t)}o.is=function(t){return t instanceof o||t&&t._&&t===t._.$||!1},o.version=.202,(o.chain=o.prototype).toJSON=function(){};var i=t("./type");i.obj.to(i,o),o.HAM=t("./HAM"),o.val=t("./val"),o.node=t("./node"),o.state=t("./state"),o.graph=t("./graph"),o.on=t("./onto"),o.ask=t("./ask"),o.dup=t("./dup"),o.puff=t("./puff"),function(){function t(e){if(e)if(e.out!==t){var i,r=this.as,a=r.at||r,u=a.$,s=a.dup,f=e.DBG;(i=e["#"])||(i=e["#"]=c(9)),s.check(i)||(s.track(i),e._="function"==typeof(i=e._)?i:function(){},e.$&&e.$===(e.$._||"").$||(e.$=u),a.ask(e["@"],e)||(f&&(f.u=+new Date),e.get&&o.on._get(e,u),!e.put)?(f&&(f.uc=+new Date),this.to.next(e),f&&(f.ua=+new Date),e.out=t,a.on("out",e),f&&(f.ue=+new Date)):n(e))}else this.to.next(e)}function n(t){if(t){var n,i,f=t._||"",c=f.root=((f.$=t.$||"")._||"").root,l=t.put,p=t["#"],h=f.DBG=t.DBG;if(l["#"]&&l["."])c.on("put",t);else{f.out=t,f.lot={s:0,more:1};var d=+new Date;for(var g in h&&(h.p=d),l){var v,m=l[g];if(!m){n=u+s(g)+"no node.";break}if(!(i=m._)){n=u+s(g)+"no meta.";break}if(g!==i[k]){n=u+s(g)+"soul not same.";break}if(!(v=i[x])){n=u+s(g)+"no state.";break}for(var b in m)if(y!==b){var w=m[b],$=v[b];if(r===$){n=u+s(b)+"on"+s(g)+"no state.";break}if(!_(w)){n=u+s(b)+"on"+s(g)+"bad "+typeof w+s(w);break}e(w,b,g,$,t)}if(n)break}h&&(h.pe=+new Date),console.STAT&&(console.STAT(d,+new Date-d,"mix"),console.STAT(d,f.lot.s,"mix #")),(f.err=n)?c.on("in",{"@":p,err:o.log(n)}):(--f.lot.more||a(f),f.stun||t["@"]||c.on("in",{"@":p,ok:-1}))}}}function e(t,n,o,i,r){var a,u=r._||"",s=u.root,c=s.graph[o]||w,h=m(c,n,1),d=c[n],g=p(),v=f(g,i,h,t,d);if(!v.incoming){if(v.defer){var k=i-g;return setTimeout((function(){e(t,n,o,i,r)}),k>l?l:k),u.to||s.on("in",{"@":r["#"],err:k}),u.to=1,k}if(!u.miss)return}(a=u.lot||"").s++,a.more++,(u.stun||(u.stun={}))[o+n]=1;var b=u.DBG;b&&(b.ph=b.ph||+new Date),s.on("put",{"#":r["#"],"@":r["@"],put:{"#":o,".":n,":":t,">":i},_:u})}function i(t){var n;(n=(t._||"").DBG)&&(n.pa=+new Date,n.pm=n.pm||+new Date);var e,o=this.as.graph,i=t._,u=t.put,s=u["#"],f=u["."],c=u[":"],l=u[">"];o[s]=v(o[s],f,l,c,s),function(t,n,e,o,i){var r,a,u=t.root;if((u.opt||"").super&&u.$.get(n),!(u&&(a=u.next)&&(a=a[n])&&a.$))return;(r=t.put||(t.put={}))[n]=v(r[n],e,i,o,n),a.put=v(a.put,e,i,o,n)}(i,s,f,r!==(e=u["="])?e:c,l),(e=i.out)&&(e=e.put)&&(e[s]=v(e[s],f,l,c,s)),--i.lot.more||a(i),this.to.next(t)}function a(n){if(!n.err){var e,o={},i=((n.$||"")._||"").root,r=(i||"").next||"",a=n.put,u=+new Date;for(var s in a){var f=a[s];(e=r[s])&&e.$&&(i.stop=o,e.on("in",{$:e.$,get:s,put:f}),i.stop=null)}console.STAT&&console.STAT(u,+new Date-u,"fire"),n.DBG&&(n.DBG.f=+new Date),(e=n.out)&&(e.out=t,i.on("out",e))}}o.create=function(n){n.root=n.root||n,n.graph=n.graph||{},n.on=n.on||o.on,n.ask=n.ask||o.ask,n.dup=n.dup||o.dup();var e=n.$.opt(n.opt);return n.once||(n.on("in",t,n),n.on("out",t,n),n.on("put",i,n),o.on("create",n),n.on("create",n)),n.once=1,e},o.on.put=n;var u="Error: Invalid graph!",s=function(t){return" '"+(""+t).slice(0,9)+"...' "},f=o.HAM,l=2147483647,p=o.state}(),function(){function t(t,n,e,i){var r=this,a=o.state.is(e,n);if(!a)return r.err="Error: No state on '"+n+"' in node '"+i+"'!";var u=r.graph[i]||w,s=o.state.is(u,n,!0),f=o.HAM(r.machine,a,s,t,u[n]);f.incoming?(r.put[i]=o.state.to(e,n,r.put[i]),(r.diff||(r.diff={}))[i]=o.state.to(e,n,r.diff[i]),r.souls[i]=!0):f.defer&&(r.defer=a<(r.defer||1/0)?a:r.defer)}function n(t,n){var o=this,r=o.$._,u=(r.next||w)[n];if(!u){if(!(r.opt||w).super)return void(o.souls[n]=!1);u=o.$.get(n)._}var s=o.map[n]={put:t,get:n,$:u.$},f={ctx:o,msg:s};o.async=!!r.tag.node,o.ack&&(s["@"]=o.ack),g(t,e,f),o.async&&(o.and||r.on("node",(function(t){this.to.next(t),t===o.map[t.get]&&(o.souls[t.get]=!1,g(t.put,i,t),g(o.souls,(function(t){if(t)return t}))||o.c||(o.c=1,this.off(),g(o.map,a,o)))})),o.and=!0,r.on("node",s))}function e(t,n){var e=this.ctx,i=e.graph,r=this.msg,a=r.get,u=r.put,s=r.$._;i[a]=o.state.to(u,n,i[a]),e.async||(s.put=o.state.to(u,n,s.put))}function i(t,n){var e=this.$._;e.put=o.state.to(this.put,n,e.put)}function a(t){t.$&&(this.cat.stop=this.stop,t.$._.on("in",t),this.cat.stop=null)}function u(t,n){if(t!==this.graph[n])return!0}o.on._put=function(e,i){var s=i._,f={$:i,graph:s.graph,put:{},map:{},souls:{},machine:o.state(),ack:e["@"],cat:s,stop:{}};if(o.obj.map(e.put,u,f)){if(o.graph.is(e.put,null,t,f)||(f.err="Error: Invalid graph!"),f.err)return s.on("in",{"@":e["#"],err:o.log(f.err)});if(g(f.put,n,f),f.async||g(f.map,a,f),r!==f.defer){var c=f.defer-f.machine;setTimeout((function(){o.on._put(e,i)}),c>MD?MD:c)}f.diff&&s.on("put",d(e,{put:f.diff}))}},o.on._get=function(t,n){var e=n._,i=t.get,r=i[k],a=e.graph[r],u=i[b],s=(e.next||(e.next={}))[r],f=(t._||"").DBG=t.DBG;if(f&&(f.g=+new Date),!a)return e.on("get",t);if(u){if("string"!=typeof u||!h(a,u))return e.on("get",t);a=o.state.to(a,u)}else a=o.window?o.obj.copy(a):a;a=o.graph.node(a);var c=function(){};c.ram=c.faith=!0,c.$=t.$,f&&(f.ga=+new Date),e.on("in",{"@":t["#"],put:a,ram:1,$:n,_:c}),f&&(f.gm=+new Date),e.on("get",t),f&&(f.gd=+new Date)}}(),o.chain.opt=function(t){var n=this._,e=(t=t||{}).peers||t;return p(t)||(t={}),p(n.opt)||(n.opt=t),f(e)&&(e=[e]),u(e)&&(e=g(e,(function(t,n,e){(n={}).id=n.url=t,e(t,n)})),p(n.opt.peers)||(n.opt.peers={}),n.opt.peers=d(e,n.opt.peers)),n.opt.peers=n.opt.peers||{},g(t,(function t(n,e){!h(this,e)||s.is(n)||l.empty(n)?this[e]=n:n&&n.constructor!==Object&&!u(n)||g(n,t,this[e])}),n.opt),o.on("opt",n),o.obj.native(),this},o.obj.native=function(){var t=Object.prototype;for(var n in t)console.log("Native Object.prototype polluted, reverting",n),delete t[n]};var r,a,u=o.list.is,s=o.text,f=s.is,c=s.random,l=o.obj,p=l.is,h=l.has,d=l.to,g=l.map,v=o.state.ify,m=o.state.is,k=o.val.link._,b=".",y=o.node._,_=o.val.is,x=o.state._,w={};(o.log=function(){return!o.log.off&&a.log.apply(a,arguments),[].slice.call(arguments).join(" ")}).once=function(t,n,e){return(e=o.log.once)[t]=e[t]||0,e[t]++||o.log(n)},"undefined"!=typeof window&&((window.GUN=window.Gun=o).window=window);try{void 0!==n&&(n.exports=o)}catch(t){}e.exports=o,(o.window||"").console=(o.window||"").console||{log:function(){}},(a=console).only=function(t,n){return a.only.i&&t===a.only.i&&a.only.i++&&(a.log.apply(a,arguments)||n)},o.log.once("welcome","Hello wonderful person! :) Thanks for using GUN, please ask for help on http://chat.gun.eco if anything takes you longer than 5min to figure out!")}))(t,"./root"),t((function(){var n=t("./root");n.chain.back=function(t,i){if(-1===(t=t||1)||1/0===t)return this._.root.$;if(1===t)return(this._.back||this._).$;var r=this._;if("string"==typeof t&&(t=t.split(".")),t instanceof Array){for(var a=0,u=t.length,s=r;a<u;a++)s=(s||o)[t[a]];return e!==s?i?this:s:(s=r.back)?s.$.back(t,i):void 0}if("function"==typeof t){var f;for(s={back:r};(s=s.back)&&e===(f=t(s,i)););return f}return n.num.is(t)?(r.back||r).$.back(t-1):this};var e,o={}}))(t,"./back"),t((function(){function n(t){var n,e,o=this.as,i=o.back,r=o.root;if(t.$||(t.$=o.$),this.to.next(t),n=t.get){if(o.lex&&(t.get=g(o.lex,t.get)),n["#"]||o.soul){if(n["#"]=n["#"]||o.soul,t["#"]||(t["#"]=m(9)),i=r.$.get(n["#"])._,n=n["."]){if(h(i.put,n)){if((e=(a=i.$.get(n)._).ack)||(a.ack=-1),i.on("in",{$:i.$,put:f.state.to(i.put,n),get:i.get}),e)return}else if("string"!=typeof n){var a={},u=(i.put||{})._;if(f.obj.map(i.put,(function(t,e){f.text.match(e,n)&&(a[e]=t)})),f.obj.empty(a)||(a._=u,i.on("in",{$:i.$,put:a,get:i.get})),e=o.lex){if(e=e._||(e._=function(){}),i.ack<e.ask&&(e.ask=i.ack),e.ask)return;e.ask=1}}}else{if((e=i.ack)||(i.ack=-1),h(i,"put")&&i.on("in",i),e&&c!==i.put)return;t.$=i.$}return r.ask(s,t),r.on("in",t)}if(r.now&&(r.now[o.id]=r.now[o.id]||!0,o.pass={}),n["."])return o.get?(t={get:{".":o.get},$:o.$},i.ask||(i.ask={}),i.ask[o.get]=t.$._,i.on("out",t)):i.on("out",t={get:{},$:o.$});if(o.ack=o.ack||-1,o.get)return t.$=o.$,n["."]=o.get,(i.ask||(i.ask={}))[o.get]=t.$._,i.on("out",t)}return i.on("out",t)}function e(t){var n,e,r=this,s=r.as,p=s.root,m=(t.$||l)._||l,k=t.put;if(s.get&&t.get!==s.get&&(t=g(t,{get:s.get})),s.has&&m!==s&&(t=g(t,{$:s.$}),m.ack&&(s.ack=m.ack)),c===k){if(e=m.put,r.to.next(t),s.soul)return;if(c===e&&c!==m.put)return;return i(s,t,r),s.has&&u(s,t),d(m.echo,s.id),void d(s.map,m.id)}if(s.soul)return r.to.next(t),i(s,t,r),void(s.next&&v(k,a,{msg:t,cat:s}));if(!(n=f.val.link.is(k)))return f.val.is(k)?(s.has||s.soul?u(s,t):(m.has||m.soul)&&((m.echo||(m.echo={}))[s.id]=m.echo[m.id]||s,(s.map||(s.map={}))[m.id]=s.map[m.id]||{at:m}),r.to.next(t),void i(s,t,r)):(s.has&&m!==s&&h(m,"put")&&(s.put=m.put),(n=f.node.soul(k))&&m.has&&(m.put=s.root.$.get(n)._.put),e=(p.stop||{})[m.id],r.to.next(t),o(s,t,m,n),i(s,t,r),void(s.next&&v(k,a,{msg:t,cat:s})));(e=(e=p.stop||{})[m.id]||(e[m.id]={})).is=e.is||m.put,e[s.id]=m.put||!0,r.to.next(t),o(s,t,m,n),i(s,t,r)}function o(t,n,e,i){if(i&&k!==t.get){var r=t.root.$.get(i)._;t.has?e=r:e.has&&o(e,n,e,i),e!==t&&(e.$||(e={}),(e.echo||(e.echo={}))[t.id]=e.echo[t.id]||t,t.has&&!(t.map||l)[e.id]&&u(t,n),(i!==(r=e.id?(t.map||(t.map={}))[e.id]=t.map[e.id]||{at:e}:{}).link||r.pass||t.pass)&&(t.pass&&(f.obj.map(t.map,(function(t){t.pass=!0})),d(t,"pass")),r.pass&&d(r,"pass"),t.has&&(t.link=i),function(t,n){var e=t.root.$.get(n)._,o=t.lex;if((t.ack||o)&&((o=o||{})["#"]=n,e.on("out",{get:o}),!t.ask))return;e=t.ask,f.obj.del(t,"ask"),v(e||t.next,(function(t,e){var o=t.lex||{};o["#"]=n,o["."]=o["."]||e,t.on("out",{get:o})})),f.obj.del(t,"ask")}(t,r.link=i)))}}function i(t,n){t.echo&&v(t.echo,r,n)}function r(t){t&&t.on&&t.on("in",this)}function a(t,n){var e,o,i,r=this.cat.next||l,a=this.msg;(k!==n||r[n])&&(o=r[n])&&(o.has?(c!==o.put&&f.val.link.is(t)||(o.put=t),e=o.$):(i=a.$)&&(i=(e=a.$.get(n))._,c!==i.put&&f.val.link.is(t)||(i.put=t)),o.on("in",{put:t,get:n,$:e,via:a}))}function u(t,n){if(t.has||t.soul){var e=t.map;t.map=null,t.has&&(t.dub&&t.root.stop&&(t.dub=null),t.link=null),(t.pass||n["@"]||null!==e)&&(c===e&&f.val.link.is(t.put)||(v(e,(function(n){(n=n.at)&&d(n.echo,t.id)})),e=t.put,v(t.next,(function(n,o){if(c===e&&c!==t.put)return!0;n.put=c,n.ack&&(n.ack=-1),n.on("in",{get:o,$:n.$,put:c})}))))}}function s(t){var n=this.as,e=n.get||"",o=n.$._,i=(t.put||"")[e["#"]];if(o.ack&&(o.ack=o.ack+1||1),t.put&&("string"!=typeof e["."]||h(i,o.get)))k!=e["."]?(o.$===(t._||"").$&&(t._.miss=o.put===c),f.on.put(t)):o.on("in",{get:o.get,put:f.val.link.ify(e["#"]),$:o.$,"@":t["@"]});else{if(o.put!==c)return;o.on("in",{get:o.get,put:o.put=c,$:o.$,"@":t["@"]})}}var f=t("./root");f.chain.chain=function(t){var o,i=this,r=i._,a=new(t||i).constructor(i),u=a._;return u.root=o=r.root,u.id=++o.once,u.back=i._,u.on=f.on,u.on("in",e,u),u.on("out",n,u),a};var c,l={},p=f.obj,h=p.has,d=p.del,g=p.to,v=p.map,m=f.text.random,k=f.node._}))(t,"./chain"),t((function(){function n(t){var n,e=this,r=e.as,u=r.at.root,f=(t.$||{})._||{},c=t.put||f.put;if((n=u.now)&&e!==n[r.now])return e.to.next(t);if(e.seen&&f.id&&e.seen[f.id])return e.to.next(t);if((n=c)&&n[s._]&&(n=s.is(n))&&(n=(t.$$=f.root.$.get(n))._,i!==n.put&&(t=a(t,{put:c=n.put}))),(n=u.mum)&&f.id){var l=f.id+(e.id||(e.id=o.text.random(9)));if(n[l])return;i===c||s.is(c)||(n[l]=!0)}r.use(t,e),e.stun?e.stun=null:e.to.next(t)}function e(t){var n=this.on;if(!t||n.soul||n.has)return this.off();if(t=(t=(t=t.$||t)._||t).id){var e;if((e=this.seen||(this.seen={}))[t])return!0;e[t]=!0}}var o=t("./root");o.chain.get=function(t,a,l){var p;if("string"!=typeof t){if("function"==typeof t){if(!0===a)return function(t,n,e,o){var r,a=t._,u=0;(r=a.soul||a.link||a.dub)?n(r,o,a):a.jam?a.jam.push([n,o]):(a.jam=[[n,o]],t.get((function(t,n){if(!(i===t.put&&!a.root.opt.super&&(r=Object.keys(a.root.opt.peers).length)&&++u<=r)){n.rid(t);var e,o=(o=t.$)&&o._||{},c=0;for(r=a.jam,delete a.jam;e=r[c++];){var l=e[0];e=e[1],l&&l(o.link||o.soul||s.is(t.put)||f(t.put)||o.dub,e,t,n)}}}),{out:{get:{".":!0}}}))}(this,t,0,l),this;var h,d=(p=this)._,g=d.root,v=g.now;(l=a||{}).at=d,l.use=t,l.out=l.out||{},l.out.get=l.out.get||{},(h=d.on("in",n,l)).rid=e,(g.now={$:1})[l.now=d.id]=h;var m=g.mum;return g.mum={},d.on("out",l.out),g.mum=m,g.now=v,p}return u(t)?this.get(""+t,a,l):(v=s.is(t))?this.get(v,a,l):r.is(t)?(p=this,(v=((v=t["#"])||c)["="]||v)&&(p=p.get(v)),p._.lex=t,p):((l=this.chain())._.err={err:o.log("Invalid get request!",t)},a&&a.call(l,l._.err),l)}if(0==t.length)return(l=this.chain())._.err={err:o.log("Invalid zero length string key!",t)},null;return(p=(this._.next||c)[t])||(p=function(t,n){var e=n._,o=e.next,i=n.chain()._;return o||(o=e.next={}),o[i.get=t]=i,n===e.root.$?i.soul=t:(e.soul||e.has)&&(i.has=t),i}(t,this)),p=p.$,(v=this._.stun)&&(p._.stun=p._.stun||v),a&&"function"==typeof a&&p.get(a,l),p};var i,r=o.obj,a=o.obj.to,u=o.num.is,s=o.val.link,f=o.node.soul,c={}}))(t,"./get"),t((function(){function n(t){t&&t()}function e(){var t=this;t.graph&&l(t.stun)&&(t.res=t.res||function(t){t&&t()},t.res((function(){delete t.via._.stun;var n=t.$.back(-1)._,e=n.ask((function(e){n.root.on("ack",e),e.err&&u.log(e),++o>(t.acks||0)&&this.off(),t.ack&&t.ack(e,this)}),t.opt),o=0,i=n.root.now;s.del(n.root,"now");var r=n.root.mum;n.root.mum={},t.ref._.on("out",{$:t.ref,put:t.out=t.env.graph,opt:t.opt,"#":e}),n.root.mum=r?s.to(r,n.root.mum):r,n.root.now=i,t.via._.on("res",{}),delete t.via._.tag.res}),t),t.res&&t.res())}function o(t,n,e,o){var r=this,a=u.is(t);!n&&o.path.length&&(r.res||d)((function(){for(var n=o.path,e=r.ref,s=0,f=n.length;s<f;s++)e=e.get(n[s]);a&&(e=t);var c=e._.dub;if(c||(c=u.node.soul(o.obj)))return e.back(-1).get(c),void o.soul(c);(r.stun=r.stun||{})[n]=1,e.get(i,!0,{as:{at:o,as:r,p:n,ref:e}})}),{as:r,at:o})}function i(t,n,e,o){n=n.as;var i,a=n.ref,s=n.at,f=[];n=n.as,a.back((function(t){if(i=t.soul||t.link||t.dub)return i;f.push(t.has||t.get)})),f=[i||n.soul].concat(f.reverse());var c=((e||{}).$||{})._||{};t=c.dub=c.dub||t||u.node.soul(s.obj)||u.node.soul(e.put||c.put)||u.val.link.is(e.put||c.put)||f.join("/"),o&&(o.stun=!0),t?r(c,c.dub=t,s,n):n.via.back("opt.uuid")((function(t,e){if(t)return u.log(t);r(c,c.dub=c.dub||e,s,n)}))}function r(t,n,e,o){t.$.back(-1).get(n),e.soul(n),delete o.stun[e.path],o.batch()}function a(t,n,e,o){if(n=n.as,e.$&&e.$._)if(e.err)u.log("Please report this as an issue! Put.any.err");else{var i,r=e.$._,a=r.put,s=n.opt||{};if(!(i=n.ref)||!i._.now){if(o&&(o.stun=!0),n.ref!==n.$){if(!(i=n.$._.get||r.get))return delete n.via._.stun,void u.log("Please report this as an issue! Put.no.get");n.data=c({},i,n.data),i=null}if(undefined===a){if(!r.get)return void delete n.via._.stun;t||(i=r.$.back((function(t){if(t.link||t.soul)return t.link||t.soul;n.data=c({},t.get,n.data)})),n.not=!0),r=(i=i||r.soul||r.link||r.dub)?r.root.$.get(i)._:r,n.soul=i,a=n.data}n.not||(n.soul=n.soul||t)||(n.path&&f(n.data)?n.soul=(s.uuid||n.via.back("opt.uuid")||u.text.random)():(g==r.get&&(n.soul=(r.put||p)["#"]||r.dub),n.soul=n.soul||r.soul||r.link||(s.uuid||n.via.back("opt.uuid")||u.text.random)()),n.soul)?n.ref.put(n.data,n.soul,n):n.via.back("opt.uuid")((function(t,e){if(t)return delete n.via._.stun,u.log(t);n.ref.put(n.data,n.soul=e,n)}))}}}var u=t("./root");u.chain.put=function(t,i,r){var s,l=this,p=l._,d=p.root.$;return(r=r||{}).data=t,r.via=r.$=r.via||r.$||l,"string"==typeof i?r.soul=i:r.ack=r.ack||i,p.soul&&(r.soul=p.soul),r.soul||d===l?f(r.data)?(r.soul=r.soul||(r.not=u.node.soul(r.data)||(r.via.back("opt.uuid")||u.text.random)()),r.via._.stun={},r.soul?(r.$=d.get(r.soul),r.ref=r.$,function(t){t.batch=e;var n=t.env=u.state.map(o,(t.opt||{}).state);if(n.soul=t.soul,t.graph=u.graph.ify(t.data,n,t),n.err)return(t.ack||h).call(t,t.out={err:u.log(n.err)}),void(t.res&&t.res());t.batch()}(r),l):(r.via.back("opt.uuid")((function(t,n){if(t)return u.log(t);(r.ref||r.$).put(r.data,r.soul=n,r)})),l)):((r.ack||h).call(r,r.out={err:u.log("Data saved to the root level of the graph must be a node (an object), not a",typeof r.data,'of "'+r.data+'"!')}),r.res&&r.res(),l):(r.via._.stun={},u.is(t)?(t.get((function(t,n,e){if(!t)return delete r.via._.stun,u.log("The reference you are saving is a",typeof e.put,'"'+e.put+'", not a node (object)!');l.put(u.val.link.ify(t),i,r)}),!0),l):(p.has&&(s=u.val.link.is(t))&&(p.dub=s),r.ref=r.ref||d._===(s=p.back)?l:s.$,r.ref._.soul&&u.val.is(r.data)&&p.get?(r.data=c({},p.get,r.data),r.ref.put(r.data,r.soul,r),l):(r.ref.get(a,!0,{as:r}),r.out||(r.res=r.res||n,r.$._.stun=r.ref._.stun),l)))};String.fromCharCode(31);var s=u.obj,f=s.is,c=s.put,l=s.empty,p={},h=function(){},d=function(t,n){t.call(n||p)},g=u.node._}))(t,"./put"),t((function(n){var e=t("./root");t("./chain"),t("./back"),t("./put"),t("./get"),n.exports=e}))(t,"./index"),t((function(){function n(t,n){var e,o=this,r=t.$,a=((r||{})._||{}).put||t.put;if(i!==a){if(e=t.$$){if(i===(e=t.$$._).put)return;a=e.put}o.change&&(a=t.put),o.as?o.ok.call(o.as,t,n):o.ok.call(r,a,t.get,t,n)}}function e(t,n,r){if(t.$){var a,u,f=this.as,c=t.$,l=c._,p=l.put||t.put;(u=t.$$)&&(a=u=t.$$._,i!==a.put&&(p=a.put)),(u=n.wait)&&(u=u[l.id])&&clearTimeout(u),n.ack=(n.ack||0)+1,!r&&i===p&&!l.root.opt.super&&n.ack<=(f.acks||Object.keys(l.root.opt.peers).length)||(!r&&(i===p||l.soul||l.link||a&&!(0<a.ack))||i===p&&!l.root.opt.super&&(u=Object.keys(l.root.opt.peers).length)&&!r&&(a||l).ack<u?u=(n.wait={})[l.id]=setTimeout((function(){e.call({as:f},t,n,u||1)}),f.wait||99):(a&&i===a.put&&(u=s.is(p))&&(p=o.node.ify({},u)),n.rid?n.rid(t):n.off(),f.ok.call(c||f.$,p,t.get)))}else n.off()}var o=t("./index");o.chain.on=function(t,e,o,i){var r,a=this,u=a._;if("string"==typeof t)return e?(r=u.on(t,e,o||u,i),o&&o.$&&(o.subs||(o.subs=[])).push(r),a):u.on(t);var s=e;return(s=!0===s?{change:!0}:s||{}).at=u,s.ok=t,a.get(n,s),a},o.chain.val=function(t,n){return o.log.once("onceval","Future Breaking API Change: .val -> .once, apologies unexpected."),this.once(t,n)},o.chain.once=function(t,n){var r=this,a=r._,u=a.put;if(0<a.ack&&i!==u)return(t||f).call(r,u,a.get),r;if(!t){o.log.once("valonce","Chainable val is experimental, its behavior and API may change moving forward. Please play with it and report bugs and ideas on how to improve it.");var s=r.chain();return s._.nix=r.once((function(){s._.on("in",r._)})),s}return(n=n||{}).ok=t,n.at=a,n.out={"#":o.text.random(9)},r.get(e,{as:n}),n.async=!0,r},o.chain.off=function(){var t,n=this._,e=n.back;if(e)return n.ack=0,(t=e.next)&&t[n.get]&&u(t,n.get),(t=e.ask)&&u(t,n.get),(t=e.put)&&u(t,n.get),(t=n.soul)&&u(e.root.graph,t),(t=n.map)&&a(t,(function(t){t.link&&e.root.$.get(t.link).off()})),(t=n.next)&&a(t,(function(t){t.$.off()})),n.on("off",{}),this};var i,r=o.obj,a=r.map,u=r.del,s=o.val.link,f=function(){}}))(t,"./on"),t((function(){function n(t){if(!t.put||o.val.is(t.put))return this.to.next(t);this.as.nix&&this.off(),i(t.put,e,{at:this.as,msg:t}),this.to.next(t)}function e(t,n){if(a!==n){var e=this.msg.$,i=this.at,r=e._.lex;r&&!o.text.match(n,r["."]||r["#"]||r)||(((r=e.get(n)._).echo||(r.echo={}))[i.id]=r.echo[i.id]||i)}}var o=t("./index");o.chain.map=function(t){var e,i=this,a=i._;return t?(o.log.once("mapfn","Map functions are experimental, their behavior and API may change moving forward. Please play with it and report bugs and ideas on how to improve it."),e=i.chain(),i.map().on((function(n,i,a,u){var s=(t||r).call(this,n,i,a,u);if(undefined!==s)return n===s?e._.on("in",a):o.is(s)?e._.on("in",s._):void e._.on("in",{get:i,put:s})})),e):((e=a.each)||(a.each=e=i.chain(),e._.nix=i.back("nix"),i.on("in",n,e._)),e)};var i=o.obj.map,r=function(){},a=o.node._}))(t,"./map"),t((function(){function n(){return e.state.lex()+e.text.random(7)}var e=t("./index");e.chain.set=function(t,o,i){var r,a=this;return o=o||function(){},(i=i||{}).item=i.item||t,(r=e.node.soul(t))&&(t=e.obj.put({},r,e.val.link.ify(r))),e.is(t)?(t.get((function(n,r,u){if(n||!t._.stun)return n?void a.put(e.obj.put({},n,e.val.link.ify(n)),o,i):o.call(a,{err:e.log('Only a node can be linked! Not "'+u.put+'"!')});t._.on("res",(function(){this.off(),a.set(t,o,i)}))}),!0),t):(e.obj.is(t)&&(r=r||e.node.soul(t)||n()),a.get(r||n()).put(t,o,i))}}))(t,"./set"),t((function(){if("undefined"!=typeof Gun){var t;try{t=(Gun.window||function(){}).localStorage}catch(t){}t||(Gun.log("Warning: No localStorage exists to persist data to!"),t={setItem:function(t,n){this[t]=n},removeItem:function(t){delete this[t]},getItem:function(t){return this[t]}}),Gun.on("create",(function(n){function e(t){if(!t.err&&t.ok){var n=t["@"];setTimeout((function(){Gun.obj.map(u,(function(t,e){Gun.obj.map(t,(function(e,o){n===e&&delete t[o]})),s(t)&&delete u[e]})),p()}),i.wait||1)}}var o=this.to,i=n.opt;if(n.once)return o.next(n);if(!1===i.localStorage)return o.next(n);i.prefix=i.file||"gun/";var r,a,u=Gun.obj.ify(t.getItem("gap/"+i.prefix))||{},s=Gun.obj.empty;if(!s(u)){var f=Gun.obj.ify(t.getItem(i.prefix))||{},c={};Gun.obj.map(u,(function(t,n){Gun.obj.map(t,(function(t,e){c[n]=Gun.state.to(f[n],e,c[n])}))})),setTimeout((function(){n.on("out",{put:c,"#":n.ask(e)})}),1)}n.on("out",(function(t){t.lS||(Gun.is(t.$)&&t.put&&!t["@"]&&(r=t["#"],Gun.graph.is(t.put,null,l),a||(a=setTimeout(p,i.wait||1))),this.to.next(t))})),n.on("ack",e),o.next(n);var l=function(t,n,e,o){(u[o]||(u[o]={}))[n]=r},p=function(){clearTimeout(a),a=!1;try{t.setItem("gap/"+i.prefix,JSON.stringify(u))}catch(t){Gun.log(err=t||"localStorage failure")}}})),Gun.on("create",(function(n){this.to.next(n);var e=n.opt;if(!n.once&&!1!==e.localStorage){e.prefix=e.file||"gun/";var o,i={},r=0,a=Gun.obj.ify(t.getItem(e.prefix))||{};n.on("localStorage",a),n.on("put",(function(t){this.to.next(t);var n,s=t.put,f=s["#"];if(a[f]=Gun.state.ify(a[f],s["."],s[">"],s[":"],f),t["@"]||((i[t["#"]]=n=(t._||"").lot||{}).lS=(n.lS||0)+1),(r+=1)>=(e.batch||1e3))return u();o||(o=setTimeout(u,e.wait||1))})),n.on("get",(function(t){function e(){if(r&&(o=r["#"])){var e=r["."];(i=a[o]||undefined)&&e&&(i=Gun.state.to(i,e)),n.on("in",{"@":t["#"],put:Gun.graph.node(i),lS:1})}}this.to.next(t);var o,i,r=t.get;Gun.debug?setTimeout(e,1):e()}));var u=function(s){var f;r=0,clearTimeout(o),o=!1;var c=i;i={},s&&(a=s);try{t.setItem(e.prefix,JSON.stringify(a))}catch(t){Gun.log(f=(t||"localStorage failure")+" Consider using GUN's IndexedDB plugin for RAD for more storage space, https://gun.eco/docs/RAD#install"),n.on("localStorage:error",{err:f,file:e.prefix,flush:a,retry:u})}(f||Gun.obj.empty(e.peers))&&Gun.obj.map(c,(function(t,e){if(t){if(t.more)return void(i[e]=t);t.s!==t.lS&&(f="localStorage batch not same.")}n.on("in",{"@":e,err:f,ok:0})}))}}}))}}))(t,"./adapters/localStorage"),t((function(n){var e=t("../type");!function(){function t(t,o){var i;if(!(o instanceof Object))return o;var r=+new Date;return e.obj.map(Object.keys(o).sort(),n,{to:i={},on:o}),console.STAT&&console.STAT(r,+new Date-r,"sort"),i}function n(t){this.to[t]=this.on[t]}var o=JSON.stringify;e.obj.hash=function(n,i){if(i||undefined!==(n=o(n,t)))return e.text.hash(i||n||"")},e.obj.hash.sort=t}();var o=e.obj.is;try{n.exports=function(t){function n(t){var n=t.batch,e="string"==typeof n;if(e&&(n+="]"),t.batch=t.tail=null,n&&!(e?3>n.length:!n.length)){if(!e)try{n=1===n.length?n[0]:JSON.stringify(n)}catch(t){return a.log("DAM JSON stringify error",t)}n&&i(n,t)}}function i(t,n){try{var e=n.wire;n.say?n.say(t):e.send&&e.send(t),r.say.d+=t.length||0,++r.say.c}catch(e){(n.queue=n.queue||[]).push(t)}}var r=function(){},a=t.opt||{};a.log=a.log||console.log,a.gap=a.gap||a.wait||0,a.pack=a.pack||.3*(a.memory?1e3*a.memory*1e3:1399e6),a.puff=a.puff||9;var u,s,f,c=setTimeout.puff||setTimeout,l=t.dup,p=l.check,h=l.track,d=r.hear=function(i,u){if(i){if(a.pack<=i.length)return r.say({dam:"!",err:"Message too big!"},u);var s,f,l,g=i[0];if(r===this&&(d.d+=i.length||0,++d.c),"["!==g){if("{"===g||(i["#"]||o(i))&&(s=i)){try{s=s||JSON.parse(i)}catch(t){return a.log("DAM JSON parse error",t)}if(!s)return;if(s.DBG&&(s.DBG=l={DBG:s.DBG}),l&&(l.hp=+new Date),(f=s["#"])||(f=s["#"]=e.text.random(9)),g=p(f))return;if((s._=function(){}).via=r.leap=u,g=s.dam)return(g=r.hear[g])&&g(s,u,t),void h(f);var v,m=+new Date;l&&(l.is=m),t.on("in",s),l&&(l.hd=+new Date),console.STAT&&(v=+new Date-m)>9&&console.STAT(m,v,"msg"),h(f).via=u,r.leap=null}}else{try{s=JSON.parse(i)}catch(t){a.log("DAM JSON parse error",t)}if(i="",!s)return;console.STAT&&console.STAT(+new Date,s.length,"# on hear batch");var k=a.puff;!function t(){for(var e,o=+new Date,i=0;i<k&&(e=s[i++]);)d(e,u);s=s.slice(i),console.STAT&&console.STAT(o,+new Date-o,"hear loop"),n(u),s.length&&c(t,0)}()}}};d.c=d.d=0,s=0,f=r.say=function(t,o){var p,d,g;if((p=this)&&(p=p.to)&&p.next&&p.next(t),!t)return!1;var v=t.DBG;o||(b=+new Date,v&&(v.y=b));var m=t._||(t._=function(){});if((d=t["#"])||(d=t["#"]=e.text.random(9)),(g=m.raw)||(g=r.raw(t)),b&&console.STAT&&console.STAT(b,+new Date-b,"say prep"),!u&&h(d),!o&&(p=t["@"])&&(o=(p=l.s[p])&&(p.via||(p=p.it)&&(p=p._)&&p.via)||r.leap),!o&&t["@"])return console.STAT&&console.STAT(+new Date,++s,"total no peer to ack to"),!1;if(!o&&r.way)return r.way(t);if(o&&o.id){if(!o.wire&&r.wire&&r.wire(o),d!==o.last){if(o.last=d,o===m.via)return!1;if((p=m.to)&&(p[o.url]||p[o.pid]||p[o.id]))return!1;if(o.batch){if(o.tail=(p=o.tail||0)+g.length,o.tail<=a.pack)return void(o.batch+=(p?",":"")+g);n(o)}o.batch="[";var k,b=+new Date;setTimeout((function(){console.STAT&&(k=+new Date-b)>9&&console.STAT(b,k,"0ms TO",d,o.id),n(o)}),a.gap),i(g,o)}}else{if(!e.obj.is(o||a.peers))return!1;var y=a.peers,_=Object.keys(o||a.peers||{});!function n(){var e=+new Date;u=1;var o=m.raw;m.raw=g;for(var i,r=0;r<9&&(i=(_||"")[r++]);)(i=y[i])&&f(t,i);m.raw=o,u=0,_=_.slice(r),console.STAT&&console.STAT(e,+new Date-e,"say loop"),_.length&&(c(n,0),h(t["@"]))}()}},r.say.c=r.say.d=0,function(){r.raw=function(n){if(!n)return"";var e,o=n._||{};if(e=o.raw)return e;if("string"==typeof n)return n;var i=t(n);return o&&(i||"").length<1e5&&(o.raw=i),i};var t=JSON.stringify}(),r.hi=function(n){var o=n.wire||{};n.id?a.peers[n.url||n.id]=n:(o=n.id=n.id||e.text.random(9),r.say({dam:"?",pid:t.opt.pid},a.peers[o]=n),delete l.s[n.last]),n.met=n.met||+new Date,o.hied||t.on(o.hied="hi",n),o=n.queue,n.queue=[],e.obj.map(o,(function(t){i(t,n)})),e.obj.native&&e.obj.native()},r.bye=function(n){t.on("bye",n);var e=+new Date;e-=n.met||e,r.bye.time=((r.bye.time||e)+e)/2},r.hear["!"]=function(t){a.log("Error:",t.err)},r.hear["?"]=function(t,n){t.pid&&(n.pid||(n.pid=t.pid),t["@"])||(r.say({dam:"?",pid:a.pid,"@":t["#"]},n),delete l.s[n.last])},t.on("create",(function(t){t.opt.pid=t.opt.pid||e.text.random(9),this.to.next(t),t.on("out",r.say)})),t.on("bye",(function(t,n){this.to.next(t=a.peers[t.id||t]||t),t.bye?t.bye():(n=t.wire)&&n.close&&n.close(),e.obj.del(a.peers,t.id),t.wire=null}));var g={};return t.on("bye",(function(t,n){this.to.next(t),(n=t.url)&&(g[n]=!0,setTimeout((function(){delete g[n]}),a.lack||9e3))})),t.on("hi",(function(n,o){this.to.next(n),(o=n.url)&&g[o]&&(delete g[o],a.super||e.obj.map(t.next,(function(i,a){(o={})[a]=t.graph[a],r.say({"##":e.obj.hash(o),get:{"#":a}},n)})))})),r}}catch(t){}}))(t,"./adapters/mesh"),t((function(){var n=t("../index");n.Mesh=t("./mesh"),n.on("opt",(function(t){function e(t){try{if(!t||!t.url)return e&&e(t);var n=t.url.replace(/^http/,"ws"),e=t.wire=new i.WebSocket(n);return e.onclose=function(){i.mesh.bye(t),o(t)},e.onerror=function(){o(t)},e.onopen=function(){i.mesh.hi(t)},e.onmessage=function(n){n&&i.mesh.hear(n.data||n,t)},e}catch(t){}}function o(t){clearTimeout(t.defer),s&&t.retry<=0||(t.retry=(t.retry||i.retry||60)-1,t.defer=setTimeout((function n(){if(s&&s.hidden)return setTimeout(n,2e3);e(t)}),2e3))}this.to.next(t);var i=t.opt;if(!t.once&&!1!==i.WebSocket){var r;"undefined"!=typeof window&&(r=window),"undefined"!=typeof global&&(r=global),r=r||{};var a=i.WebSocket||r.WebSocket||r.webkitWebSocket||r.mozWebSocket;if(a){i.WebSocket=a;var u=i.mesh=i.mesh||n.Mesh(t);u.wire=i.wire=e,setTimeout((function(){t.on("out",{dam:"hi"})}),1);var s="undefined"!=typeof document&&document}}}))}))(t,"./adapters/websocket")}();
+;(function(){
+
+  /* UNBUILD */
+  function USE(arg, req){
+    return req? require(arg) : arg.slice? USE[R(arg)] : function(mod, path){
+      arg(mod = {exports: {}});
+      USE[R(path)] = mod.exports;
+    }
+    function R(p){
+      return p.split('/').slice(-1).toString().replace('.js','');
+    }
+  }
+  if(typeof module !== "undefined"){ var MODULE = module }
+  /* UNBUILD */
+
+	;USE(function(module){
+		// Shim for generic javascript utilities.
+		String.random = function(l, c){
+			var s = '';
+			l = l || 24; // you are not going to make a 0 length random number, so no need to check type
+			c = c || '0123456789ABCDEFGHIJKLMNOPQRSTUVWXZabcdefghijklmnopqrstuvwxyz';
+			while(l-- > 0){ s += c.charAt(Math.floor(Math.random() * c.length)) }
+			return s;
+		}
+		String.match = function(t, o){ var tmp, u;
+			if('string' !== typeof t){ return false }
+			if('string' == typeof o){ o = {'=': o} }
+			o = o || {};
+			tmp = (o['='] || o['*'] || o['>'] || o['<']);
+			if(t === tmp){ return true }
+			if(u !== o['=']){ return false }
+			tmp = (o['*'] || o['>']);
+			if(t.slice(0, (tmp||'').length) === tmp){ return true }
+			if(u !== o['*']){ return false }
+			if(u !== o['>'] && u !== o['<']){
+				return (t >= o['>'] && t <= o['<'])? true : false;
+			}
+			if(u !== o['>'] && t >= o['>']){ return true }
+			if(u !== o['<'] && t <= o['<']){ return true }
+			return false;
+		}
+		String.hash = function(s, c){ // via SO
+			if(typeof s !== 'string'){ return }
+	    c = c || 0; // CPU schedule hashing by
+	    if(!s.length){ return c }
+	    for(var i=0,l=s.length,n; i<l; ++i){
+	      n = s.charCodeAt(i);
+	      c = ((c<<5)-c)+n;
+	      c |= 0;
+	    }
+	    return c;
+	  }
+		var has = Object.prototype.hasOwnProperty;
+		Object.plain = function(o){ return o? (o instanceof Object && o.constructor === Object) || Object.prototype.toString.call(o).match(/^\[object (\w+)\]$/)[1] === 'Object' : false }
+		Object.empty = function(o, n){
+			for(var k in o){ if(has.call(o, k) && (!n || -1==n.indexOf(k))){ return false } }
+			return true;
+		}
+		Object.keys = Object.keys || function(o){
+			var l = [];
+			for(var k in o){ if(has.call(o, k)){ l.push(k) } }
+			return l;
+		}
+		;(function(){ // max ~1ms or before stack overflow 
+			var u, sT = setTimeout, l = 0, c = 0, sI = (typeof setImmediate !== ''+u && setImmediate) || sT; // queueMicrotask faster but blocks UI
+			sT.poll = sT.poll || function(f){ //f(); return; // for testing
+				if((1 >= (+new Date - l)) && c++ < 3333){ f(); return }
+				sI(function(){ l = +new Date; f() },c=0)
+			}
+		}());
+		;(function(){ // Too many polls block, this "threads" them in turns over a single thread in time.
+			var sT = setTimeout, t = sT.turn = sT.turn || function(f){ 1 == s.push(f) && p(T) }
+			, s = t.s = [], p = sT.poll, i = 0, f, T = function(){
+				if(f = s[i++]){ f() }
+				if(i == s.length || 99 == i){
+					s = t.s = s.slice(i);
+					i = 0;
+				}
+				if(s.length){ p(T) }
+			}
+		}());
+		;(function(){
+			var u, sT = setTimeout, T = sT.turn;
+			(sT.each = sT.each || function(l,f,e,S){ S = S || 9; (function t(s,L,r){
+			  if(L = (s = (l||[]).splice(0,S)).length){
+			  	for(var i = 0; i < L; i++){
+			  		if(u !== (r = f(s[i]))){ break }
+			  	}
+			  	if(u === r){ T(t); return }
+			  } e && e(r);
+			}())})();
+		}());
+	})(USE, './shim');
+
+	;USE(function(module){
+		// On event emitter generic javascript utility.
+		module.exports = function onto(tag, arg, as){
+			if(!tag){ return {to: onto} }
+			var u, f = 'function' == typeof arg, tag = (this.tag || (this.tag = {}))[tag] || f && (
+				this.tag[tag] = {tag: tag, to: onto._ = { next: function(arg){ var tmp;
+					if(tmp = this.to){ tmp.next(arg) }
+			}}});
+			if(f){
+				var be = {
+					off: onto.off ||
+					(onto.off = function(){
+						if(this.next === onto._.next){ return !0 }
+						if(this === this.the.last){
+							this.the.last = this.back;
+						}
+						this.to.back = this.back;
+						this.next = onto._.next;
+						this.back.to = this.to;
+						if(this.the.last === this.the){
+							delete this.on.tag[this.the.tag];
+						}
+					}),
+					to: onto._,
+					next: arg,
+					the: tag,
+					on: this,
+					as: as,
+				};
+				(be.back = tag.last || tag).to = be;
+				return tag.last = be;
+			}
+			if((tag = tag.to) && u !== arg){ tag.next(arg) }
+			return tag;
+		};
+	})(USE, './onto');
+
+	;USE(function(module){
+		USE('./shim');
+		module.exports = function(v){ // Valid values are a subset of JSON: null, binary, number (!Infinity), text, or a soul relation. Arrays need special algorithms to handle concurrency, so they are not supported directly. Use an extension that supports them if needed but research their problems first.
+			if(v === undefined){ return false }
+			if(v === null){ return true } // "deletes", nulling out keys.
+			if(v === Infinity){ return false } // we want this to be, but JSON does not support it, sad face.
+			if(v !== v){ return false } // can you guess what this checks for? ;)
+			if('string' == typeof v // text!
+			|| 'boolean' == typeof v
+			|| 'number' == typeof v){
+				return true; // simple values are valid.
+			}
+			if(v && ('string' == typeof (v['#']||0)) && Object.empty(v, ['#'])){ return v['#'] } // is link
+			return false; // If not, everything else remaining is an invalid data type. Custom extensions can be built on top of these primitives to support other types.
+		}
+	})(USE, './valid');
+
+	;USE(function(module){
+		USE('./shim');
+		function State(){
+			var t = +new Date;
+			if(last < t){
+				return N = 0, last = t + State.drift;
+			}
+			return last = t + ((N += 1) / D) + State.drift;
+		}
+		State.drift = 0;
+		var NI = -Infinity, N = 0, D = 999, last = NI, u; // WARNING! In the future, on machines that are D times faster than 2016AD machines, you will want to increase D by another several orders of magnitude so the processing speed never out paces the decimal resolution (increasing an integer effects the state accuracy).
+		State.is = function(n, k, o){ // convenience function to get the state on a key on a node and return it.
+			var tmp = (k && n && n._ && n._['>']) || o;
+			if(!tmp){ return }
+			return ('number' == typeof (tmp = tmp[k]))? tmp : NI;
+		}
+		State.ify = function(n, k, s, v, soul){ // put a key's state on a node.
+			(n = n || {})._ = n._ || {}; // safety check or init.
+			if(soul){ n._['#'] = soul } // set a soul if specified.
+			var tmp = n._['>'] || (n._['>'] = {}); // grab the states data.
+			if(u !== k && k !== '_'){
+				if('number' == typeof s){ tmp[k] = s } // add the valid state.
+				if(u !== v){ n[k] = v } // Note: Not its job to check for valid values!
+			}
+			return n;
+		}
+		module.exports = State;
+	})(USE, './state');
+
+	;USE(function(module){
+		USE('./shim');
+		function Dup(opt){
+			var dup = {s:{}}, s = dup.s;
+			opt = opt || {max: 999, age: 1000 * 9};//*/ 1000 * 9 * 3};
+			dup.check = function(id){
+				if(!s[id]){ return false }
+				return dt(id);
+			}
+			var dt = dup.track = function(id){
+				var it = s[id] || (s[id] = {});
+				it.was = dup.now = +new Date;
+				if(!dup.to){ dup.to = setTimeout(dup.drop, opt.age + 9) }
+				return it;
+			}
+			dup.drop = function(age){
+				dup.to = null;
+				dup.now = +new Date;
+				var l = Object.keys(s);
+				console.STAT && console.STAT(dup.now, +new Date - dup.now, 'dup drop keys'); // prev ~20% CPU 7% RAM 300MB // now ~25% CPU 7% RAM 500MB
+				setTimeout.each(l, function(id){ var it = s[id]; // TODO: .keys( is slow?
+					if(it && (age || opt.age) > (dup.now - it.was)){ return }
+					delete s[id];
+				},0,99);
+			}
+			return dup;
+		}
+		module.exports = Dup;
+	})(USE, './dup');
+
+	;USE(function(module){
+		// request / response module, for asking and acking messages.
+		USE('./onto'); // depends upon onto!
+		module.exports = function ask(cb, as){
+			if(!this.on){ return }
+			var lack = (this.opt||{}).lack || 9000;
+			if(!('function' == typeof cb)){
+				if(!cb){ return }
+				var id = cb['#'] || cb, tmp = (this.tag||'')[id];
+				if(!tmp){ return }
+				if(as){
+					tmp = this.on(id, as);
+					clearTimeout(tmp.err);
+					tmp.err = setTimeout(function(){ tmp.off() }, lack);
+				}
+				return true;
+			}
+			var id = (as && as['#']) || random(9);
+			if(!cb){ return id }
+			var to = this.on(id, cb, as);
+			to.err = to.err || setTimeout(function(){ to.off();
+				to.next({err: "Error: No ACK yet.", lack: true});
+			}, lack);
+			return id;
+		}
+		var random = String.random || function(){ return Math.random().toString(36).slice(2) }
+	})(USE, './ask');
+
+	;USE(function(module){
+
+		function Gun(o){
+			if(o instanceof Gun){ return (this._ = {$: this}).$ }
+			if(!(this instanceof Gun)){ return new Gun(o) }
+			return Gun.create(this._ = {$: this, opt: o});
+		}
+
+		Gun.is = function($){ return ($ instanceof Gun) || ($ && $._ && ($ === $._.$)) || false }
+
+		Gun.version = 0.2020;
+
+		Gun.chain = Gun.prototype;
+		Gun.chain.toJSON = function(){};
+
+		USE('./shim');
+		Gun.valid = USE('./valid');
+		Gun.state = USE('./state');
+		Gun.on = USE('./onto');
+		Gun.dup = USE('./dup');
+		Gun.ask = USE('./ask');
+
+		;(function(){
+			Gun.create = function(at){
+				at.root = at.root || at;
+				at.graph = at.graph || {};
+				at.on = at.on || Gun.on;
+				at.ask = at.ask || Gun.ask;
+				at.dup = at.dup || Gun.dup();
+				var gun = at.$.opt(at.opt);
+				if(!at.once){
+					at.on('in', universe, at);
+					at.on('out', universe, at);
+					at.on('put', map, at);
+					Gun.on('create', at);
+					at.on('create', at);
+				}
+				at.once = 1;
+				return gun;
+			}
+			function universe(msg){
+				//if(!F){ var eve = this; setTimeout(function(){ universe.call(eve, msg,1) },Math.random() * 100);return; } // ADD F TO PARAMS!
+				if(!msg){ return }
+				if(msg.out === universe){ this.to.next(msg); return }
+				var eve = this, as = eve.as, at = as.at || as, gun = at.$, dup = at.dup, tmp, DBG = msg.DBG;
+				(tmp = msg['#']) || (tmp = msg['#'] = text_rand(9));
+				if(dup.check(tmp)){ return } dup.track(tmp);
+				tmp = msg._; msg._ = ('function' == typeof tmp)? tmp : function(){};
+				(msg.$ && (msg.$ === (msg.$._||'').$)) || (msg.$ = gun);
+				if(msg['@'] && !msg.put){ ack(msg) }
+				if(!at.ask(msg['@'], msg)){ // is this machine listening for an ack?
+					DBG && (DBG.u = +new Date);
+					if(msg.put){ put(msg); return } else
+					if(msg.get){ Gun.on.get(msg, gun) }
+				}
+				DBG && (DBG.uc = +new Date);
+				eve.to.next(msg);
+				DBG && (DBG.ua = +new Date);
+				if(msg.nts || msg.NTS){ return } // TODO: This shouldn't be in core, but fast way to prevent NTS spread. Delete this line after all peers have upgraded to newer versions.
+				msg.out = universe; at.on('out', msg);
+				DBG && (DBG.ue = +new Date);
+			}
+			function put(msg){
+				if(!msg){ return }
+				var ctx = msg._||'', root = ctx.root = ((ctx.$ = msg.$||'')._||'').root;
+				if(msg['@'] && ctx.faith && !ctx.miss){ // TODO: AXE may split/route based on 'put' what should we do here? Detect @ in AXE? I think we don't have to worry, as DAM will route it on @.
+					msg.out = universe;
+					root.on('out', msg);
+					return;
+				}
+				ctx.latch = root.hatch; ctx.match = root.hatch = [];
+				var put = msg.put;
+				var DBG = ctx.DBG = msg.DBG, S = +new Date;
+				if(put['#'] && put['.']){ /*root && root.on('put', msg);*/ return } // TODO: BUG! This needs to call HAM instead.
+				DBG && (DBG.p = S);
+				ctx['#'] = msg['#'];
+				ctx.msg = msg;
+				ctx.all = 0;
+				ctx.stun = 1;
+				var nl = Object.keys(put);//.sort(); // TODO: This is unbounded operation, large graphs will be slower. Write our own CPU scheduled sort? Or somehow do it in below? Keys itself is not O(1) either, create ES5 shim over ?weak map? or custom which is constant.
+				console.STAT && console.STAT(S, ((DBG||ctx).pk = +new Date) - S, 'put sort');
+				var ni = 0, nj, kl, soul, node, states, err, tmp;
+				(function pop(o){
+					if(nj != ni){ nj = ni;
+						if(!(soul = nl[ni])){
+							console.STAT && console.STAT(S, ((DBG||ctx).pd = +new Date) - S, 'put');
+							fire(ctx);
+							return;
+						}
+						if(!(node = put[soul])){ err = ERR+cut(soul)+"no node." } else
+						if(!(tmp = node._)){ err = ERR+cut(soul)+"no meta." } else
+						if(soul !== tmp['#']){ err = ERR+cut(soul)+"soul not same." } else
+						if(!(states = tmp['>'])){ err = ERR+cut(soul)+"no state." }
+						kl = Object.keys(node||{}); // TODO: .keys( is slow
+					}
+					if(err){
+						msg.err = ctx.err = err; // invalid data should error and stun the message.
+						fire(ctx);
+						//console.log("handle error!", err) // handle!
+						return;
+					}
+					var i = 0, key; o = o || 0;
+					while(o++ < 9 && (key = kl[i++])){
+						if('_' === key){ continue }
+						var val = node[key], state = states[key];
+						if(u === state){ err = ERR+cut(key)+"on"+cut(soul)+"no state."; break }
+						if(!valid(val)){ err = ERR+cut(key)+"on"+cut(soul)+"bad "+(typeof val)+cut(val); break }
+						//ctx.all++; //ctx.ack[soul+key] = '';
+						ham(val, key, soul, state, msg);
+					}
+					if((kl = kl.slice(i)).length){ turn(pop); return }
+					++ni; kl = null; pop(o);
+				}());
+			} Gun.on.put = put;
+			// TODO: MARK!!! clock below, reconnect sync, SEA certify wire merge, User.auth taking multiple times, // msg put, put, say ack, hear loop...
+			// WASIS BUG! first .once( undef 2nd good. .off othe rpeople: .open
+			function ham(val, key, soul, state, msg){
+				var ctx = msg._||'', root = ctx.root, graph = root.graph, lot, tmp;
+				var vertex = graph[soul] || empty, was = state_is(vertex, key, 1), known = vertex[key];
+				
+				var DBG = ctx.DBG; if(tmp = console.STAT){ if(!graph[soul] || !known){ tmp.has = (tmp.has || 0) + 1 } }
+
+				var now = State(), u;
+				if(state > now){
+					setTimeout(function(){ ham(val, key, soul, state, msg) }, (tmp = state - now) > MD? MD : tmp); // Max Defer 32bit. :(
+					console.STAT && console.STAT(((DBG||ctx).Hf = +new Date), tmp, 'future');
+					return;
+				}
+				if(state < was){ /*old;*/ if(!ctx.miss){ return } } // but some chains have a cache miss that need to re-fire. // TODO: Improve in future. // for AXE this would reduce rebroadcast, but GUN does it on message forwarding.
+				if(!ctx.faith){ // TODO: BUG? Can this be used for cache miss as well? // Yes this was a bug, need to check cache miss for RAD tests, but should we care about the faith check now? Probably not.
+					if(state === was && (val === known || L(val) <= L(known))){ /*console.log("same");*/ /*same;*/ if(!ctx.miss){ return } } // same
+				}
+				ctx.stun++; // TODO: 'forget' feature in SEA tied to this, bad approach, but hacked in for now. Any changes here must update there.
+				var aid = msg['#']+ctx.all++, id = {toString: function(){ return aid }, _: ctx}; id.toJSON = id.toString; // this *trick* makes it compatible between old & new versions.
+				DBG && (DBG.ph = DBG.ph || +new Date);
+				root.on('put', {'#': id, '@': msg['@'], put: {'#': soul, '.': key, ':': val, '>': state}, _: ctx});
+			}
+			function map(msg){
+				var DBG; if(DBG = (msg._||'').DBG){ DBG.pa = +new Date; DBG.pm = DBG.pm || +new Date}
+      	var eve = this, root = eve.as, graph = root.graph, ctx = msg._, put = msg.put, soul = put['#'], key = put['.'], val = put[':'], state = put['>'], id = msg['#'], tmp;
+      	if((tmp = ctx.msg) && (tmp = tmp.put) && (tmp = tmp[soul])){ state_ify(tmp, key, state, val, soul) } // necessary! or else out messages do not get SEA transforms.
+				graph[soul] = state_ify(graph[soul], key, state, val, soul);
+				if(tmp = (root.next||'')[soul]){ tmp.on('in', msg) }
+				fire(ctx);
+				eve.to.next(msg);
+			}
+			function fire(ctx, msg){ var root;
+				if(ctx.stop){ return }
+				if(!ctx.err && 0 < --ctx.stun){ return } // TODO: 'forget' feature in SEA tied to this, bad approach, but hacked in for now. Any changes here must update there.
+				ctx.stop = 1;
+				if(!(root = ctx.root)){ return }
+				var tmp = ctx.match; tmp.end = 1;
+				if(tmp === root.hatch){ if(!(tmp = ctx.latch) || tmp.end){ delete root.hatch } else { root.hatch = tmp } }
+				ctx.hatch && ctx.hatch(); // TODO: rename/rework how put & this interact.
+				setTimeout.each(ctx.match, function(cb){cb && cb()}); 
+				if(!(msg = ctx.msg) || ctx.err || msg.err){ return }
+				msg.out = universe;
+				ctx.root.on('out', msg);
+			}
+			function ack(msg){ // aggregate ACKs.
+				var id = msg['@'] || '', ctx;
+				if(!(ctx = id._)){ return }
+				ctx.acks = (ctx.acks||0) + 1;
+				if(ctx.err = msg.err){
+					msg['@'] = ctx['#'];
+					fire(ctx); // TODO: BUG? How it skips/stops propagation of msg if any 1 item is error, this would assume a whole batch/resync has same malicious intent.
+				}
+				if(!ctx.stop && !ctx.crack){ ctx.crack = ctx.match && ctx.match.push(function(){back(ctx)}) } // handle synchronous acks
+				back(ctx);
+			}
+			function back(ctx){
+				if(!ctx || !ctx.root){ return }
+				if(ctx.stun || ctx.acks !== ctx.all){ return }
+				ctx.root.on('in', {'@': ctx['#'], err: ctx.err, ok: ctx.err? u : {'':1}});
+			}
+
+			var ERR = "Error: Invalid graph!";
+			var cut = function(s){ return " '"+(''+s).slice(0,9)+"...' " }
+			var L = JSON.stringify, MD = 2147483647, State = Gun.state;
+
+		}());
+
+		;(function(){
+			Gun.on.get = function(msg, gun){
+				var root = gun._, get = msg.get, soul = get['#'], node = root.graph[soul], has = get['.'];
+				var next = root.next || (root.next = {}), at = next[soul];
+				// queue concurrent GETs?
+				// TODO: consider tagging original message into dup for DAM.
+				// TODO: ^ above? In chat app, 12 messages resulted in same peer asking for `#user.pub` 12 times. (same with #user GET too, yipes!) // DAM note: This also resulted in 12 replies from 1 peer which all had same ##hash but none of them deduped because each get was different.
+				// TODO: Moving quick hacks fixing these things to axe for now.
+				// TODO: a lot of GET #foo then GET #foo."" happening, why?
+				// TODO: DAM's ## hash check, on same get ACK, producing multiple replies still, maybe JSON vs YSON?
+				// TMP note for now: viMZq1slG was chat LEX query #.
+				/*if(gun !== (tmp = msg.$) && (tmp = (tmp||'')._)){
+					if(tmp.Q){ tmp.Q[msg['#']] = ''; return } // chain does not need to ask for it again.
+					tmp.Q = {};
+				}*/
+				/*if(u === has){
+					if(at.Q){
+						//at.Q[msg['#']] = '';
+						//return;
+					}
+					at.Q = {};
+				}*/
+				var ctx = msg._||{}, DBG = ctx.DBG = msg.DBG;
+				DBG && (DBG.g = +new Date);
+				//console.log("GET:", get, node, has);
+				if(!node){ return root.on('get', msg) }
+				if(has){
+					if('string' != typeof has || u === node[has]){ return root.on('get', msg) }
+					node = state_ify({}, has, state_is(node, has), node[has], soul);
+					// If we have a key in-memory, do we really need to fetch?
+					// Maybe... in case the in-memory key we have is a local write
+					// we still need to trigger a pull/merge from peers.
+				}
+				//Gun.window? Gun.obj.copy(node) : node; // HNPERF: If !browser bump Performance? Is this too dangerous to reference root graph? Copy / shallow copy too expensive for big nodes. Gun.obj.to(node); // 1 layer deep copy // Gun.obj.copy(node); // too slow on big nodes
+				node && ack(msg, node);
+				root.on('get', msg); // send GET to storage adapters.
+			}
+			function ack(msg, node){
+				var S = +new Date, ctx = msg._||{}, DBG = ctx.DBG = msg.DBG;
+				var to = msg['#'], id = text_rand(9), keys = Object.keys(node||'').sort(), soul = ((node||'')._||'')['#'], kl = keys.length, j = 0, root = msg.$._.root, F = (node === root.graph[soul]);
+				console.STAT && console.STAT(S, ((DBG||ctx).gk = +new Date) - S, 'got keys');
+				// PERF: Consider commenting this out to force disk-only reads for perf testing? // TODO: .keys( is slow
+				node && (function go(){
+					S = +new Date;
+					var i = 0, k, put = {}, tmp;
+					while(i < 9 && (k = keys[i++])){
+						state_ify(put, k, state_is(node, k), node[k], soul);
+					}
+					keys = keys.slice(i);
+					(tmp = {})[soul] = put; put = tmp;
+					var faith; if(F){ faith = function(){}; faith.ram = faith.faith = true; } // HNPERF: We're testing performance improvement by skipping going through security again, but this should be audited.
+					tmp = keys.length;
+					console.STAT && console.STAT(S, -(S - (S = +new Date)), 'got copied some');
+					DBG && (DBG.ga = +new Date);
+					root.on('in', {'@': to, '#': id, put: put, '%': (tmp? (id = text_rand(9)) : u), $: root.$, _: faith, DBG: DBG});
+					console.STAT && console.STAT(S, +new Date - S, 'got in');
+					if(!tmp){ return }
+					setTimeout.turn(go);
+				}());
+				if(!node){ root.on('in', {'@': msg['#']}) } // TODO: I don't think I like this, the default lS adapter uses this but "not found" is a sensitive issue, so should probably be handled more carefully/individually.
+			} Gun.on.get.ack = ack;
+		}());
+
+		;(function(){
+			Gun.chain.opt = function(opt){
+				opt = opt || {};
+				var gun = this, at = gun._, tmp = opt.peers || opt;
+				if(!Object.plain(opt)){ opt = {} }
+				if(!Object.plain(at.opt)){ at.opt = opt }
+				if('string' == typeof tmp){ tmp = [tmp] }
+				if(tmp instanceof Array){
+					if(!Object.plain(at.opt.peers)){ at.opt.peers = {}}
+					tmp.forEach(function(url){
+						var p = {}; p.id = p.url = url;
+						at.opt.peers[url] = at.opt.peers[url] || p;
+					})
+				}
+				at.opt.peers = at.opt.peers || {};
+				obj_each(opt, function each(k){ var v = this[k];
+					if((this && this.hasOwnProperty(k)) || 'string' == typeof v || Object.empty(v)){ this[k] = v; return }
+					if(v && v.constructor !== Object && !(v instanceof Array)){ return }
+					obj_each(v, each);
+				});
+				Gun.on('opt', at);
+				at.opt.uuid = at.opt.uuid || function uuid(l){ return Gun.state().toString(36).replace('.','') + String.random(l||12) }
+				return gun;
+			}
+		}());
+
+		var obj_each = function(o,f){ Object.keys(o).forEach(f,o) }, text_rand = String.random, turn = setTimeout.turn, valid = Gun.valid, state_is = Gun.state.is, state_ify = Gun.state.ify, u, empty = {}, C;
+
+		Gun.log = function(){ return (!Gun.log.off && C.log.apply(C, arguments)), [].slice.call(arguments).join(' ') };
+		Gun.log.once = function(w,s,o){ return (o = Gun.log.once)[w] = o[w] || 0, o[w]++ || Gun.log(s) };
+
+		if(typeof window !== "undefined"){ (window.GUN = window.Gun = Gun).window = window }
+		try{ if(typeof MODULE !== "undefined"){ MODULE.exports = Gun } }catch(e){}
+		module.exports = Gun;
+		
+		(Gun.window||{}).console = (Gun.window||{}).console || {log: function(){}};
+		(C = console).only = function(i, s){ return (C.only.i && i === C.only.i && C.only.i++) && (C.log.apply(C, arguments) || s) };
+
+		;"Please do not remove welcome log unless you are paying for a monthly sponsorship, thanks!";
+		Gun.log.once("welcome", "Hello wonderful person! :) Thanks for using GUN, please ask for help on http://chat.gun.eco if anything takes you longer than 5min to figure out!");
+	})(USE, './root');
+
+	;USE(function(module){
+		var Gun = USE('./root');
+		Gun.chain.back = function(n, opt){ var tmp;
+			n = n || 1;
+			if(-1 === n || Infinity === n){
+				return this._.root.$;
+			} else
+			if(1 === n){
+				return (this._.back || this._).$;
+			}
+			var gun = this, at = gun._;
+			if(typeof n === 'string'){
+				n = n.split('.');
+			}
+			if(n instanceof Array){
+				var i = 0, l = n.length, tmp = at;
+				for(i; i < l; i++){
+					tmp = (tmp||empty)[n[i]];
+				}
+				if(u !== tmp){
+					return opt? gun : tmp;
+				} else
+				if((tmp = at.back)){
+					return tmp.$.back(n, opt);
+				}
+				return;
+			}
+			if('function' == typeof n){
+				var yes, tmp = {back: at};
+				while((tmp = tmp.back)
+				&& u === (yes = n(tmp, opt))){}
+				return yes;
+			}
+			if('number' == typeof n){
+				return (at.back || at).$.back(n - 1);
+			}
+			return this;
+		}
+		var empty = {}, u;
+	})(USE, './back');
+
+	;USE(function(module){
+		// WARNING: GUN is very simple, but the JavaScript chaining API around GUN
+		// is complicated and was extremely hard to build. If you port GUN to another
+		// language, consider implementing an easier API to build.
+		var Gun = USE('./root');
+		Gun.chain.chain = function(sub){
+			var gun = this, at = gun._, chain = new (sub || gun).constructor(gun), cat = chain._, root;
+			cat.root = root = at.root;
+			cat.id = ++root.once;
+			cat.back = gun._;
+			cat.on = Gun.on;
+			cat.on('in', Gun.on.in, cat); // For 'in' if I add my own listeners to each then I MUST do it before in gets called. If I listen globally for all incoming data instead though, regardless of individual listeners, I can transform the data there and then as well.
+			cat.on('out', Gun.on.out, cat); // However for output, there isn't really the global option. I must listen by adding my own listener individually BEFORE this one is ever called.
+			return chain;
+		}
+
+		function output(msg){
+			var put, get, at = this.as, back = at.back, root = at.root, tmp;
+			if(!msg.$){ msg.$ = at.$ }
+			this.to.next(msg);
+			if(at.err){ at.on('in', {put: at.put = u, $: at.$}); return }
+			if(get = msg.get){
+				/*if(u !== at.put){
+					at.on('in', at);
+					return;
+				}*/
+				if(root.pass){ root.pass[at.id] = at; } // will this make for buggy behavior elsewhere?
+				if(at.lex){ Object.keys(at.lex).forEach(function(k){ tmp[k] = at.lex[k] }, tmp = msg.get = msg.get || {}) }
+				if(get['#'] || at.soul){
+					get['#'] = get['#'] || at.soul;
+					msg['#'] || (msg['#'] = text_rand(9)); // A3120 ?
+					back = (root.$.get(get['#'])._);
+					if(!(get = get['.'])){ // soul
+						tmp = back.ask && back.ask['']; // check if we have already asked for the full node
+						(back.ask || (back.ask = {}))[''] = back; // add a flag that we are now.
+						if(u !== back.put){ // if we already have data,
+							back.on('in', back); // send what is cached down the chain
+							if(tmp){ return } // and don't ask for it again.
+						}
+						msg.$ = back.$;
+					} else
+					if(obj_has(back.put, get)){ // TODO: support #LEX !
+						tmp = back.ask && back.ask[get];
+						(back.ask || (back.ask = {}))[get] = back.$.get(get)._;
+						back.on('in', {get: get, put: {'#': back.soul, '.': get, ':': back.put[get], '>': state_is(root.graph[back.soul], get)}});
+						if(tmp){ return }
+					}
+						/*put = (back.$.get(get)._);
+						if(!(tmp = put.ack)){ put.ack = -1 }
+						back.on('in', {
+							$: back.$,
+							put: Gun.state.ify({}, get, Gun.state(back.put, get), back.put[get]),
+							get: back.get
+						});
+						if(tmp){ return }
+					} else
+					if('string' != typeof get){
+						var put = {}, meta = (back.put||{})._;
+						Gun.obj.map(back.put, function(v,k){
+							if(!Gun.text.match(k, get)){ return }
+							put[k] = v;
+						})
+						if(!Gun.obj.empty(put)){
+							put._ = meta;
+							back.on('in', {$: back.$, put: put, get: back.get})
+						}
+						if(tmp = at.lex){
+							tmp = (tmp._) || (tmp._ = function(){});
+							if(back.ack < tmp.ask){ tmp.ask = back.ack }
+							if(tmp.ask){ return }
+							tmp.ask = 1;
+						}
+					}
+					*/
+					root.ask(ack, msg); // A3120 ?
+					return root.on('in', msg);
+				}
+				//if(root.now){ root.now[at.id] = root.now[at.id] || true; at.pass = {} }
+				if(get['.']){
+					if(at.get){
+						msg = {get: {'.': at.get}, $: at.$};
+						(back.ask || (back.ask = {}))[at.get] = msg.$._; // TODO: PERFORMANCE? More elegant way?
+						return back.on('out', msg);
+					}
+					msg = {get: at.lex? msg.get : {}, $: at.$};
+					return back.on('out', msg);
+				}
+				(at.ask || (at.ask = {}))[''] = at;	 //at.ack = at.ack || -1;
+				if(at.get){
+					get['.'] = at.get;
+					(back.ask || (back.ask = {}))[at.get] = msg.$._; // TODO: PERFORMANCE? More elegant way?
+					return back.on('out', msg);
+				}
+			}
+			return back.on('out', msg);
+		}; Gun.on.out = output;
+
+		function input(msg, cat){ cat = cat || this.as; // TODO: V8 may not be able to optimize functions with different parameter calls, so try to do benchmark to see if there is any actual difference.
+			var root = cat.root, gun = msg.$ || (msg.$ = cat.$), at = (gun||'')._ || empty, tmp = msg.put||'', soul = tmp['#'], key = tmp['.'], change = (u !== tmp['='])? tmp['='] : tmp[':'], state = tmp['>'] || -Infinity, sat; // eve = event, at = data at, cat = chain at, sat = sub at (children chains).
+			if(u !== msg.put && (u === tmp['#'] || u === tmp['.'] || (u === tmp[':'] && u === tmp['=']) || u === tmp['>'])){ // convert from old format
+				if(!valid(tmp)){
+					if(!(soul = ((tmp||'')._||'')['#'])){ console.log("chain not yet supported for", tmp, '...', msg, cat); return; }
+					gun = cat.root.$.get(soul);
+					return setTimeout.each(Object.keys(tmp).sort(), function(k){ // TODO: .keys( is slow // BUG? ?Some re-in logic may depend on this being sync?
+						if('_' == k || u === (state = state_is(tmp, k))){ return }
+						cat.on('in', {$: gun, put: {'#': soul, '.': k, '=': tmp[k], '>': state}, VIA: msg});
+					});
+				}
+				cat.on('in', {$: at.back.$, put: {'#': soul = at.back.soul, '.': key = at.has || at.get, '=': tmp, '>': state_is(at.back.put, key)}, via: msg}); // TODO: This could be buggy! It assumes/approxes data, other stuff could have corrupted it.
+				return;
+			}
+			if((msg.seen||'')[cat.id]){ return } (msg.seen || (msg.seen = function(){}))[cat.id] = cat; // help stop some infinite loops
+
+			if(cat !== at){ // don't worry about this when first understanding the code, it handles changing contexts on a message. A soul chain will never have a different context.
+				Object.keys(msg).forEach(function(k){ tmp[k] = msg[k] }, tmp = {}); // make copy of message
+				tmp.get = cat.get || tmp.get;
+				if(!cat.soul && !cat.has){ // if we do not recognize the chain type
+					tmp.$$$ = tmp.$$$ || cat.$; // make a reference to wherever it came from.
+				} else
+				if(at.soul){ // a has (property) chain will have a different context sometimes if it is linked (to a soul chain). Anything that is not a soul or has chain, will always have different contexts.
+					tmp.$ = cat.$;
+					tmp.$$ = tmp.$$ || at.$;
+				}
+				msg = tmp; // use the message with the new context instead;
+			}
+			unlink(msg, cat);
+
+			if(((cat.soul/* && (cat.ask||'')['']*/) || msg.$$) && state >= state_is(root.graph[soul], key)){ // The root has an in-memory cache of the graph, but if our peer has asked for the data then we want a per deduplicated chain copy of the data that might have local edits on it.
+				(tmp = root.$.get(soul)._).put = state_ify(tmp.put, key, state, change, soul);
+			}
+			if(!at.soul /*&& (at.ask||'')['']*/ && state >= state_is(root.graph[soul], key) && (sat = (root.$.get(soul)._.next||'')[key])){ // Same as above here, but for other types of chains. // TODO: Improve perf by preventing echoes recaching.
+				sat.put = change; // update cache
+				if('string' == typeof (tmp = valid(change))){
+					sat.put = root.$.get(tmp)._.put || change; // share same cache as what we're linked to.
+				}
+			}
+
+			this.to && this.to.next(msg); // 1st API job is to call all chain listeners.
+			// TODO: Make input more reusable by only doing these (some?) calls if we are a chain we recognize? This means each input listener would be responsible for when listeners need to be called, which makes sense, as they might want to filter.
+			cat.any && setTimeout.each(Object.keys(cat.any), function(any){ (any = cat.any[any]) && any(msg) },0,99); // 1st API job is to call all chain listeners. // TODO: .keys( is slow // BUG: Some re-in logic may depend on this being sync.
+			cat.echo && setTimeout.each(Object.keys(cat.echo), function(lat){ (lat = cat.echo[lat]) && lat.on('in', msg) },0,99); // & linked at chains // TODO: .keys( is slow // BUG: Some re-in logic may depend on this being sync.
+
+			if(((msg.$$||'')._||at).soul){ // comments are linear, but this line of code is non-linear, so if I were to comment what it does, you'd have to read 42 other comments first... but you can't read any of those comments until you first read this comment. What!? // shouldn't this match link's check?
+				// is there cases where it is a $$ that we do NOT want to do the following? 
+				if((sat = cat.next) && (sat = sat[key])){ // TODO: possible trick? Maybe have `ionmap` code set a sat? // TODO: Maybe we should do `cat.ask` instead? I guess does not matter.
+					tmp = {}; Object.keys(msg).forEach(function(k){ tmp[k] = msg[k] });
+					tmp.$ = (msg.$$||msg.$).get(tmp.get = key); delete tmp.$$; delete tmp.$$$;
+					sat.on('in', tmp);
+				}
+			}
+
+			link(msg, cat);
+		}; Gun.on.in = input;
+
+		function link(msg, cat){ cat = cat || this.as || msg.$._;
+			if(msg.$$ && this !== Gun.on){ return } // $$ means we came from a link, so we are at the wrong level, thus ignore it unless overruled manually by being called directly.
+			if(!msg.put || cat.soul){ return } // But you cannot overrule being linked to nothing, or trying to link a soul chain - that must never happen.
+			var put = msg.put||'', link = put['=']||put[':'], tmp;
+			var root = cat.root, tat = root.$.get(put['#']).get(put['.'])._;
+			if('string' != typeof (link = valid(link))){
+				if(this === Gun.on){ (tat.echo || (tat.echo = {}))[cat.id] = cat } // allow some chain to explicitly force linking to simple data.
+				return; // by default do not link to data that is not a link.
+			}
+			if((tat.echo || (tat.echo = {}))[cat.id] // we've already linked ourselves so we do not need to do it again. Except... (annoying implementation details)
+				&& !(root.pass||'')[cat.id]){ return } // if a new event listener was added, we need to make a pass through for it. The pass will be on the chain, not always the chain passed down. 
+			if(tmp = root.pass){ if(tmp[link+cat.id]){ return } tmp[link+cat.id] = 1 } // But the above edge case may "pass through" on a circular graph causing infinite passes, so we hackily add a temporary check for that.
+
+			(tat.echo||(tat.echo={}))[cat.id] = cat; // set ourself up for the echo! // TODO: BUG? Echo to self no longer causes problems? Confirm.
+
+			if(cat.has){ cat.link = link }
+			var sat = root.$.get(tat.link = link)._; // grab what we're linking to.
+			(sat.echo || (sat.echo = {}))[tat.id] = tat; // link it.
+			var tmp = cat.ask||''; // ask the chain for what needs to be loaded next!
+			if(tmp[''] || cat.lex){ // we might need to load the whole thing // TODO: cat.lex probably has edge case bugs to it, need more test coverage.
+				sat.on('out', {get: {'#': link}});
+			}
+			setTimeout.each(Object.keys(tmp), function(get, sat){ // if sub chains are asking for data. // TODO: .keys( is slow // BUG? ?Some re-in logic may depend on this being sync?
+				if(!get || !(sat = tmp[get])){ return }
+				sat.on('out', {get: {'#': link, '.': get}}); // go get it.
+			},0,99);
+		}; Gun.on.link = link;
+
+		function unlink(msg, cat){ // ugh, so much code for seemingly edge case behavior.
+			var put = msg.put||'', change = (u !== put['='])? put['='] : put[':'], root = cat.root, link, tmp;
+			if(u === change){ // 1st edge case: If we have a brand new database, no data will be found.
+				// TODO: BUG! because emptying cache could be async from below, make sure we are not emptying a newer cache. So maybe pass an Async ID to check against?
+				// TODO: BUG! What if this is a map? // Warning! Clearing things out needs to be robust against sync/async ops, or else you'll see `map val get put` test catastrophically fail because map attempts to link when parent graph is streamed before child value gets set. Need to differentiate between lack acks and force clearing.
+				if(cat.soul && u !== cat.put){ return } // data may not be found on a soul, but if a soul already has data, then nothing can clear the soul as a whole.
+				//if(!cat.has){ return }
+				tmp = (msg.$$||msg.$||'')._||'';
+				if(msg['@'] && (u !== tmp.put || u !== cat.put)){ return } // a "not found" from other peers should not clear out data if we have already found it.
+				//if(cat.has && u === cat.put && !(root.pass||'')[cat.id]){ return } // if we are already unlinked, do not call again, unless edge case. // TODO: BUG! This line should be deleted for "unlink deeply nested".
+				if(link = cat.link || msg.linked){
+					delete (root.$.get(link)._.echo||'')[cat.id];
+				}
+				if(cat.has){ // TODO: Empty out links, maps, echos, acks/asks, etc.?
+					cat.link = null;
+				}
+				cat.put = u; // empty out the cache if, for example, alice's car's color no longer exists (relative to alice) if alice no longer has a car.
+				// TODO: BUG! For maps, proxy this so the individual sub is triggered, not all subs.
+				setTimeout.each(Object.keys(cat.next||''), function(get, sat){ // empty out all sub chains. // TODO: .keys( is slow // BUG? ?Some re-in logic may depend on this being sync? // TODO: BUG? This will trigger deeper put first, does put logic depend on nested order? // TODO: BUG! For map, this needs to be the isolated child, not all of them.
+					if(!(sat = cat.next[get])){ return }
+					//if(cat.has && u === sat.put && !(root.pass||'')[sat.id]){ return } // if we are already unlinked, do not call again, unless edge case. // TODO: BUG! This line should be deleted for "unlink deeply nested".
+					if(link){ delete (root.$.get(link).get(get)._.echo||'')[sat.id] }
+					sat.on('in', {get: get, put: u, $: sat.$}); // TODO: BUG? Add recursive seen check?
+				},0,99);
+				return;
+			}
+			if(cat.soul){ return } // a soul cannot unlink itself.
+			if(msg.$$){ return } // a linked chain does not do the unlinking, the sub chain does. // TODO: BUG? Will this cancel maps?
+			link = valid(change); // need to unlink anytime we are not the same link, though only do this once per unlink (and not on init).
+			tmp = msg.$._||'';
+			if(link === tmp.link || (cat.has && !tmp.link)){
+				if((root.pass||'')[cat.id] && 'string' !== typeof link){
+
+				} else {
+					return;
+				}
+			}
+			delete (tmp.echo||'')[cat.id];
+			unlink({get: cat.get, put: u, $: msg.$, linked: msg.linked = msg.linked || tmp.link}, cat); // unlink our sub chains.
+		}; Gun.on.unlink = unlink;
+
+		function ack(msg, ev){
+			//if(!msg['%'] && (this||'').off){ this.off() } // do NOT memory leak, turn off listeners! Now handled by .ask itself
+			// manhattan:
+			var as = this.as, at = as.$._, root = at.root, get = as.get||'', tmp = (msg.put||'')[get['#']]||'';
+			if(!msg.put || ('string' == typeof get['.'] && u === tmp[get['.']])){
+				if(u !== at.put){ return }
+				if(!at.soul && !at.has){ return } // TODO: BUG? For now, only core-chains will handle not-founds, because bugs creep in if non-core chains are used as $ but we can revisit this later for more powerful extensions.
+				at.ack = (at.ack || 0) + 1;
+				at.on('in', {
+					get: at.get,
+					put: at.put = u,
+					$: at.$,
+					'@': msg['@']
+				});
+				/*(tmp = at.Q) && setTimeout.each(Object.keys(tmp), function(id){ // TODO: Temporary testing, not integrated or being used, probably delete.
+					Object.keys(msg).forEach(function(k){ tmp[k] = msg[k] }, tmp = {}); tmp['@'] = id; // copy message
+					root.on('in', tmp);
+				}); delete at.Q;*/
+				return;
+			}
+			(msg._||{}).miss = 1;
+			Gun.on.put(msg);
+			return; // eom
+		}
+
+		var empty = {}, u, text_rand = String.random, valid = Gun.valid, obj_has = function(o, k){ return o && Object.prototype.hasOwnProperty.call(o, k) }, state = Gun.state, state_is = state.is, state_ify = state.ify;
+	})(USE, './chain');
+
+	;USE(function(module){
+		var Gun = USE('./root');
+		Gun.chain.get = function(key, cb, as){
+			var gun, tmp;
+			if(typeof key === 'string'){
+				if(key.length == 0) {	
+					(gun = this.chain())._.err = {err: Gun.log('0 length key!', key)};
+					if(cb){ cb.call(gun, gun._.err) }
+					return gun;
+				}
+				var back = this, cat = back._;
+				var next = cat.next || empty;
+				if(!(gun = next[key])){
+					gun = key && cache(key, back);
+				}
+				gun = gun && gun.$;
+			} else
+			if('function' == typeof key){
+				if(true === cb){ return soul(this, key, cb, as), this }
+				gun = this;
+				var cat = gun._, opt = cb || {}, root = cat.root, id;
+				opt.at = cat;
+				opt.ok = key;
+				var wait = {}; // can we assign this to the at instead, like in once?
+				//var path = []; cat.$.back(at => { at.get && path.push(at.get.slice(0,9))}); path = path.reverse().join('.');
+				function any(msg, eve, f){
+					if(any.stun){ return }
+					if((tmp = root.pass) && !tmp[id]){ return }
+					var at = msg.$._, sat = (msg.$$||'')._, data = (sat||at).put, odd = (!at.has && !at.soul), test = {}, link, tmp;
+					if(odd || u === data){ // handles non-core
+						data = (u === ((tmp = msg.put)||'')['='])? (u === (tmp||'')[':'])? tmp : tmp[':'] : tmp['='];
+					}
+					if(link = ('string' == typeof (tmp = Gun.valid(data)))){
+						data = (u === (tmp = root.$.get(tmp)._.put))? opt.not? u : data : tmp;
+					}
+					if(opt.not && u === data){ return }
+					if(u === opt.stun){
+						if((tmp = root.stun) && tmp.on){
+							cat.$.back(function(a){ // our chain stunned?
+								tmp.on(''+a.id, test = {});
+								if((test.run || 0) < any.id){ return test } // if there is an earlier stun on gapless parents/self.
+							});
+							!test.run && tmp.on(''+at.id, test = {}); // this node stunned?
+							!test.run && sat && tmp.on(''+sat.id, test = {}); // linked node stunned?
+							if(any.id > test.run){
+								if(!test.stun || test.stun.end){
+									test.stun = tmp.on('stun');
+									test.stun = test.stun && test.stun.last;
+								}
+								if(test.stun && !test.stun.end){
+									//if(odd && u === data){ return }
+									//if(u === msg.put){ return } // "not found" acks will be found if there is stun, so ignore these.
+									(test.stun.add || (test.stun.add = {}))[id] = function(){ any(msg,eve,1) } // add ourself to the stun callback list that is called at end of the write.
+									return;
+								}
+							}
+						}
+						if(/*odd &&*/ u === data){ f = 0 } // if data not found, keep waiting/trying.
+						/*if(f && u === data){
+							cat.on('out', opt.out);
+							return;
+						}*/
+						if((tmp = root.hatch) && !tmp.end && u === opt.hatch && !f){ // quick hack! // What's going on here? Because data is streamed, we get things one by one, but a lot of developers would rather get a callback after each batch instead, so this does that by creating a wait list per chain id that is then called at the end of the batch by the hatch code in the root put listener.
+							if(wait[at.$._.id]){ return } wait[at.$._.id] = 1;
+							tmp.push(function(){any(msg,eve,1)});
+							return;
+						}; wait = {}; // end quick hack.
+					}
+					// call:
+					if(root.pass){ if(root.pass[id+at.id]){ return } root.pass[id+at.id] = 1 }
+					if(opt.on){ opt.ok.call(at.$, data, at.get, msg, eve || any); return } // TODO: Also consider breaking `this` since a lot of people do `=>` these days and `.call(` has slower performance.
+					if(opt.v2020){ opt.ok(msg, eve || any); return }
+					Object.keys(msg).forEach(function(k){ tmp[k] = msg[k] }, tmp = {}); msg = tmp; msg.put = data; // 2019 COMPATIBILITY! TODO: GET RID OF THIS!
+					opt.ok.call(opt.as, msg, eve || any); // is this the right
+				};
+				any.at = cat;
+				//(cat.any||(cat.any=function(msg){ setTimeout.each(Object.keys(cat.any||''), function(act){ (act = cat.any[act]) && act(msg) },0,99) }))[id = String.random(7)] = any; // maybe switch to this in future?
+				(cat.any||(cat.any={}))[id = String.random(7)] = any;
+				any.off = function(){ any.stun = 1; if(!cat.any){ return } delete cat.any[id] }
+				any.rid = rid; // logic from old version, can we clean it up now?
+				any.id = opt.run || ++root.once; // used in callback to check if we are earlier than a write. // will this ever cause an integer overflow?
+				tmp = root.pass; (root.pass = {})[id] = 1; // Explanation: test trade-offs want to prevent recursion so we add/remove pass flag as it gets fulfilled to not repeat, however map map needs many pass flags - how do we reconcile?
+				opt.out = opt.out || {get: {}};
+				cat.on('out', opt.out);
+				root.pass = tmp;
+				return gun;
+			} else
+			if('number' == typeof key){
+				return this.get(''+key, cb, as);
+			} else
+			if('string' == typeof (tmp = valid(key))){
+				return this.get(tmp, cb, as);
+			} else
+			if(tmp = this.get.next){
+				gun = tmp(this, key);
+			}
+			if(!gun){
+				(gun = this.chain())._.err = {err: Gun.log('Invalid get request!', key)}; // CLEAN UP
+				if(cb){ cb.call(gun, gun._.err) }
+				return gun;
+			}
+			if(cb && 'function' == typeof cb){
+				gun.get(cb, as);
+			}
+			return gun;
+		}
+		function cache(key, back){
+			var cat = back._, next = cat.next, gun = back.chain(), at = gun._;
+			if(!next){ next = cat.next = {} }
+			next[at.get = key] = at;
+			if(back === cat.root.$){
+				at.soul = key;
+			} else
+			if(cat.soul || cat.has){
+				at.has = key;
+				//if(obj_has(cat.put, key)){
+					//at.put = cat.put[key];
+				//}
+			}
+			return at;
+		}
+		function soul(gun, cb, opt, as){
+			var cat = gun._, acks = 0, tmp;
+			if(tmp = cat.soul || cat.link){ return cb(tmp, as, cat) }
+			if(cat.jam){ return cat.jam.push([cb, as]) }
+			cat.jam = [[cb,as]];
+			gun.get(function go(msg, eve){
+				if(u === msg.put && !cat.root.opt.super && (tmp = Object.keys(cat.root.opt.peers).length) && ++acks <= tmp){ // TODO: super should not be in core code, bring AXE up into core instead to fix? // TODO: .keys( is slow
+					return;
+				}
+				eve.rid(msg);
+				var at = ((at = msg.$) && at._) || {}, i = 0, as;
+				tmp = cat.jam; delete cat.jam; // tmp = cat.jam.splice(0, 100);
+				//if(tmp.length){ process.nextTick(function(){ go(msg, eve) }) }
+				while(as = tmp[i++]){ //Gun.obj.map(tmp, function(as, cb){
+					var cb = as[0], id; as = as[1];
+					cb && cb(id = at.link || at.soul || Gun.valid(msg.put) || ((msg.put||{})._||{})['#'], as, msg, eve);
+				} //);
+			}, {out: {get: {'.':true}}});
+			return gun;
+		}
+		function rid(at){
+			var cat = this.at || this.on;
+			if(!at || cat.soul || cat.has){ return this.off() }
+			if(!(at = (at = (at = at.$ || at)._ || at).id)){ return }
+			var map = cat.map, tmp, seen;
+			//if(!map || !(tmp = map[at]) || !(tmp = tmp.at)){ return }
+			if(tmp = (seen = this.seen || (this.seen = {}))[at]){ return true }
+			seen[at] = true;
+			return;
+			//tmp.echo[cat.id] = {}; // TODO: Warning: This unsubscribes ALL of this chain's listeners from this link, not just the one callback event.
+			//obj.del(map, at); // TODO: Warning: This unsubscribes ALL of this chain's listeners from this link, not just the one callback event.
+			return;
+		}
+		var empty = {}, valid = Gun.valid, u;
+	})(USE, './get');
+
+	;USE(function(module){
+		var Gun = USE('./root');
+		Gun.chain.put = function(data, cb, as){ // I rewrote it :)
+			var gun = this, at = gun._, root = at.root;
+			as = as || {};
+			as.root = at.root;
+			as.run || (as.run = root.once);
+			stun(as, at.id); // set a flag for reads to check if this chain is writing.
+			as.ack = as.ack || cb;
+			as.via = as.via || gun;
+			as.data = as.data || data;
+			as.soul || (as.soul = at.soul || ('string' == typeof cb && cb));
+			var s = as.state = as.state || Gun.state();
+			if('function' == typeof data){ data(function(d){ as.data = d; gun.put(u,u,as) }); return gun }
+			if(!as.soul){ return get(as), gun }
+			as.$ = root.$.get(as.soul); // TODO: This may not allow user chaining and similar?
+			as.todo = [{it: as.data, ref: as.$}];
+			as.turn = as.turn || turn;
+			as.ran = as.ran || ran;
+			//var path = []; as.via.back(at => { at.get && path.push(at.get.slice(0,9)) }); path = path.reverse().join('.');
+			// TODO: Perf! We only need to stun chains that are being modified, not necessarily written to.
+			(function walk(){
+				var to = as.todo, at = to.pop(), d = at.it, cid = at.ref && at.ref._.id, v, k, cat, tmp, g;
+				stun(as, at.ref);
+				if(tmp = at.todo){
+					k = tmp.pop(); d = d[k];
+					if(tmp.length){ to.push(at) }
+				}
+				k && (to.path || (to.path = [])).push(k);
+				if(!(v = valid(d)) && !(g = Gun.is(d))){
+					if(!Object.plain(d)){ (as.ack||noop).call(as, as.out = {err: as.err = Gun.log("Invalid data: " + ((d && (tmp = d.constructor) && tmp.name) || typeof d) + " at " + (as.via.back(function(at){at.get && tmp.push(at.get)}, tmp = []) || tmp.join('.'))+'.'+(to.path||[]).join('.'))}); as.ran(as); return }
+					var seen = as.seen || (as.seen = []), i = seen.length;
+					while(i--){ if(d === (tmp = seen[i]).it){ v = d = tmp.link; break } }
+				}
+				if(k && v){ at.node = state_ify(at.node, k, s, d) } // handle soul later.
+				else {
+					as.seen.push(cat = {it: d, link: {}, todo: g? [] : Object.keys(d).sort().reverse(), path: (to.path||[]).slice(), up: at}); // Any perf reasons to CPU schedule this .keys( ?
+					at.node = state_ify(at.node, k, s, cat.link);
+					!g && cat.todo.length && to.push(cat);
+					// ---------------
+					var id = as.seen.length;
+					(as.wait || (as.wait = {}))[id] = '';
+					tmp = (cat.ref = (g? d : k? at.ref.get(k) : at.ref))._;
+					(tmp = (d && (d._||'')['#']) || tmp.soul || tmp.link)? resolve({soul: tmp}) : cat.ref.get(resolve, {run: as.run, /*hatch: 0,*/ v2020:1, out:{get:{'.':' '}}}); // TODO: BUG! This should be resolve ONLY soul to prevent full data from being loaded. // Fixed now?
+					//setTimeout(function(){ if(F){ return } console.log("I HAVE NOT BEEN CALLED!", path, id, cat.ref._.id, k) }, 9000); var F; // MAKE SURE TO ADD F = 1 below!
+					function resolve(msg, eve){
+						var end = cat.link['#'];
+						if(eve){ eve.off(); eve.rid(msg) } // TODO: Too early! Check all peers ack not found.
+						// TODO: BUG maybe? Make sure this does not pick up a link change wipe, that it uses the changign link instead.
+						var soul = end || msg.soul || (tmp = (msg.$$||msg.$)._||'').soul || tmp.link || ((tmp = tmp.put||'')._||'')['#'] || tmp['#'] || (((tmp = msg.put||'') && msg.$$)? tmp['#'] : (tmp['=']||tmp[':']||'')['#']);
+						!end && stun(as, msg.$);
+						if(!soul && !at.link['#']){ // check soul link above us
+							(at.wait || (at.wait = [])).push(function(){ resolve(msg, eve) }) // wait
+							return;
+						}
+						if(!soul){
+							soul = [];
+							(msg.$$||msg.$).back(function(at){
+								if(tmp = at.soul || at.link){ return soul.push(tmp) }
+								soul.push(at.get);
+							});
+							soul = soul.reverse().join('/');
+						}
+						cat.link['#'] = soul;
+						!g && (((as.graph || (as.graph = {}))[soul] = (cat.node || (cat.node = {_:{}})))._['#'] = soul);
+						delete as.wait[id];
+						cat.wait && setTimeout.each(cat.wait, function(cb){ cb && cb() });
+						as.ran(as);
+					};
+					// ---------------
+				}
+				if(!to.length){ return as.ran(as) }
+				as.turn(walk);
+			}());
+			return gun;
+		}
+
+		function stun(as, id){
+			if(!id){ return } id = (id._||'').id||id;
+			var run = as.root.stun || (as.root.stun = {on: Gun.on}), test = {}, tmp;
+			as.stun || (as.stun = run.on('stun', function(){ }));
+			if(tmp = run.on(''+id)){ tmp.the.last.next(test) }
+			if(test.run >= as.run){ return }
+			run.on(''+id, function(test){
+				if(as.stun.end){
+					this.off();
+					this.to.next(test);
+					return;
+				}
+				test.run = test.run || as.run;
+				test.stun = test.stun || as.stun; return;
+				if(this.to.to){
+					this.the.last.next(test);
+					return;
+				}
+				test.stun = as.stun;
+			});
+		}
+
+		function ran(as){
+			if(as.err){ ran.end(as.stun, as.root); return } // move log handle here.
+			if(as.todo.length || as.end || !Object.empty(as.wait)){ return } as.end = 1;
+			var cat = (as.$.back(-1)._), root = cat.root, ask = cat.ask(function(ack){
+				root.on('ack', ack);
+				if(ack.err){ Gun.log(ack) }
+				if(++acks > (as.acks || 0)){ this.off() } // Adjustable ACKs! Only 1 by default.
+				if(!as.ack){ return }
+				as.ack(ack, this);
+			}, as.opt), acks = 0, stun = as.stun, tmp;
+			(tmp = function(){ // this is not official yet, but quick solution to hack in for now.
+				if(!stun){ return }
+				ran.end(stun, root);
+				setTimeout.each(Object.keys(stun = stun.add||''), function(cb){ if(cb = stun[cb]){cb()} }); // resume the stunned reads // Any perf reasons to CPU schedule this .keys( ?
+			}).hatch = tmp; // this is not official yet ^
+			//console.log(1, "PUT", as.run, as.graph);
+			(as.via._).on('out', {put: as.out = as.graph, opt: as.opt, '#': ask, _: tmp});
+		}; ran.end = function(stun,root){
+			stun.end = noop; // like with the earlier id, cheaper to make this flag a function so below callbacks do not have to do an extra type check.
+			if(stun.the.to === stun && stun === stun.the.last){ delete root.stun }
+			stun.off();
+		}
+
+		function get(as){
+			var at = as.via._, tmp;
+			as.via = as.via.back(function(at){
+				if(at.soul || !at.get){ return at.$ }
+				tmp = as.data; (as.data = {})[at.get] = tmp;
+			});
+			if(!as.via || !as.via._.soul){
+				as.via = at.root.$.get(((as.data||'')._||'')['#'] || at.$.back('opt.uuid')())
+			}
+			as.via.put(as.data, as.ack, as);
+			
+
+			return;
+			if(at.get && at.back.soul){
+				tmp = as.data;
+				as.via = at.back.$;
+				(as.data = {})[at.get] = tmp; 
+				as.via.put(as.data, as.ack, as);
+				return;
+			}
+		}
+
+		var u, empty = {}, noop = function(){}, turn = setTimeout.turn, valid = Gun.valid, state_ify = Gun.state.ify;
+		var iife = function(fn,as){fn.call(as||empty)}
+	})(USE, './put');
+
+	;USE(function(module){
+		var Gun = USE('./root');
+		USE('./chain');
+		USE('./back');
+		USE('./put');
+		USE('./get');
+		module.exports = Gun;
+	})(USE, './index');
+
+	;USE(function(module){
+		var Gun = USE('./index');
+		Gun.chain.on = function(tag, arg, eas, as){ // don't rewrite!
+			var gun = this, cat = gun._, root = cat.root, act, off, id, tmp;
+			if(typeof tag === 'string'){
+				if(!arg){ return cat.on(tag) }
+				act = cat.on(tag, arg, eas || cat, as);
+				if(eas && eas.$){
+					(eas.subs || (eas.subs = [])).push(act);
+				}
+				return gun;
+			}
+			var opt = arg;
+			(opt = (true === opt)? {change: true} : opt || {}).not = 1; opt.on = 1;
+			//opt.at = cat;
+			//opt.ok = tag;
+			//opt.last = {};
+			var wait = {}; // can we assign this to the at instead, like in once?
+			gun.get(tag, opt);
+			/*gun.get(function on(data,key,msg,eve){ var $ = this;
+				if(tmp = root.hatch){ // quick hack!
+					if(wait[$._.id]){ return } wait[$._.id] = 1;
+					tmp.push(function(){on.call($, data,key,msg,eve)});
+					return;
+				}; wait = {}; // end quick hack.
+				tag.call($, data,key,msg,eve);
+			}, opt); // TODO: PERF! Event listener leak!!!?*/
+			/*
+			function one(msg, eve){
+				if(one.stun){ return }
+				var at = msg.$._, data = at.put, tmp;
+				if(tmp = at.link){ data = root.$.get(tmp)._.put }
+				if(opt.not===u && u === data){ return }
+				if(opt.stun===u && (tmp = root.stun) && (tmp = tmp[at.id] || tmp[at.back.id]) && !tmp.end){ // Remember! If you port this into `.get(cb` make sure you allow stun:0 skip option for `.put(`.
+					tmp[id] = function(){one(msg,eve)};
+					return;
+				}
+				//tmp = one.wait || (one.wait = {}); console.log(tmp[at.id] === ''); if(tmp[at.id] !== ''){ tmp[at.id] = tmp[at.id] || setTimeout(function(){tmp[at.id]='';one(msg,eve)},1); return } delete tmp[at.id];
+				// call:
+				if(opt.as){
+					opt.ok.call(opt.as, msg, eve || one);
+				} else {
+					opt.ok.call(at.$, data, msg.get || at.get, msg, eve || one);
+				}
+			};
+			one.at = cat;
+			(cat.act||(cat.act={}))[id = String.random(7)] = one;
+			one.off = function(){ one.stun = 1; if(!cat.act){ return } delete cat.act[id] }
+			cat.on('out', {get: {}});*/
+			return gun;
+		}
+		// Rules:
+		// 1. If cached, should be fast, but not read while write.
+		// 2. Should not retrigger other listeners, should get triggered even if nothing found.
+		// 3. If the same callback passed to many different once chains, each should resolve - an unsubscribe from the same callback should not effect the state of the other resolving chains, if you do want to cancel them all early you should mutate the callback itself with a flag & check for it at top of callback
+		Gun.chain.once = function(cb, opt){ opt = opt || {}; // avoid rewriting
+			if(!cb){ return none(this,opt) }
+			var gun = this, cat = gun._, root = cat.root, data = cat.put, id = String.random(7), one, tmp;
+			gun.get(function(data,key,msg,eve){
+				var $ = this, at = $._, one = (at.one||(at.one={}));
+				if(eve.stun){ return } if('' === one[id]){ return }
+				if(true === (tmp = Gun.valid(data))){ once(); return }
+				if('string' == typeof tmp){ return } // TODO: BUG? Will this always load?
+				clearTimeout((cat.one||'')[id]); // clear "not found" since they only get set on cat.
+				clearTimeout(one[id]); one[id] = setTimeout(once, opt.wait||99); // TODO: Bug? This doesn't handle plural chains.
+				function once(){
+					if(!at.has && !at.soul){ at = {put: data, get: key} } // handles non-core messages.
+					if(u === (tmp = at.put)){ tmp = ((msg.$$||'')._||'').put }
+					if('string' == typeof Gun.valid(tmp)){ tmp = root.$.get(tmp)._.put; if(tmp === u){return} }
+					if(eve.stun){ return } if('' === one[id]){ return } one[id] = '';
+					if(cat.soul || cat.has){ eve.off() } // TODO: Plural chains? // else { ?.off() } // better than one check?
+					cb.call($, tmp, at.get);
+				};
+			}, {on: 1});
+			return gun;
+		}
+		function none(gun,opt,chain){
+			Gun.log.once("valonce", "Chainable val is experimental, its behavior and API may change moving forward. Please play with it and report bugs and ideas on how to improve it.");
+			(chain = gun.chain())._.nix = gun.once(function(data, key){ chain._.on('in', this._) });
+			chain._.lex = gun._.lex; // TODO: Better approach in future? This is quick for now.
+			return chain;
+		}
+
+		Gun.chain.off = function(){
+			// make off more aggressive. Warning, it might backfire!
+			var gun = this, at = gun._, tmp;
+			var cat = at.back;
+			if(!cat){ return }
+			at.ack = 0; // so can resubscribe.
+			if(tmp = cat.next){
+				if(tmp[at.get]){
+					delete tmp[at.get];
+				} else {
+
+				}
+			}
+			// TODO: delete cat.one[map.id]?
+			if(tmp = cat.ask){
+				delete tmp[at.get];
+			}
+			if(tmp = cat.put){
+				delete tmp[at.get];
+			}
+			if(tmp = at.soul){
+				delete cat.root.graph[tmp];
+			}
+			if(tmp = at.map){
+				Object.keys(tmp).forEach(function(i,at){ at = tmp[i]; //obj_map(tmp, function(at){
+					if(at.link){
+						cat.root.$.get(at.link).off();
+					}
+				});
+			}
+			if(tmp = at.next){
+				Object.keys(tmp).forEach(function(i,neat){ neat = tmp[i]; //obj_map(tmp, function(neat){
+					neat.$.off();
+				});
+			}
+			at.on('off', {});
+			return gun;
+		}
+		var empty = {}, noop = function(){}, u;
+	})(USE, './on');
+
+	;USE(function(module){
+		var Gun = USE('./index'), next = Gun.chain.get.next;
+		Gun.chain.get.next = function(gun, lex){ var tmp;
+			if(!Object.plain(lex)){ return (next||noop)(gun, lex) }
+			if(tmp = ((tmp = lex['#'])||'')['='] || tmp){ return gun.get(tmp) }
+			(tmp = gun.chain()._).lex = lex; // LEX!
+			gun.on('in', function(eve){
+				if(String.match(eve.get|| (eve.put||'')['.'], lex['.'] || lex['#'] || lex)){
+					tmp.on('in', eve);
+				}
+				this.to.next(eve);
+			});
+			return tmp.$;
+		}
+		Gun.chain.map = function(cb, opt, t){
+			var gun = this, cat = gun._, lex, chain;
+			if(Object.plain(cb)){ lex = cb['.']? cb : {'.': cb}; cb = u }
+			if(!cb){
+				if(chain = cat.each){ return chain }
+				(cat.each = chain = gun.chain())._.lex = lex || chain._.lex || cat.lex;
+				chain._.nix = gun.back('nix');
+				gun.on('in', map, chain._);
+				return chain;
+			}
+			Gun.log.once("mapfn", "Map functions are experimental, their behavior and API may change moving forward. Please play with it and report bugs and ideas on how to improve it.");
+			chain = gun.chain();
+			gun.map().on(function(data, key, msg, eve){
+				var next = (cb||noop).call(this, data, key, msg, eve);
+				if(u === next){ return }
+				if(data === next){ return chain._.on('in', msg) }
+				if(Gun.is(next)){ return chain._.on('in', next._) }
+				var tmp = {}; Object.keys(msg.put).forEach(function(k){ tmp[k] = msg.put[k] }, tmp); tmp['='] = next; 
+				chain._.on('in', {get: key, put: tmp});
+			});
+			return chain;
+		}
+		function map(msg){ this.to.next(msg);
+			var cat = this.as, gun = msg.$, at = gun._, put = msg.put, tmp;
+			if(!at.soul && !msg.$$){ return } // this line took hundreds of tries to figure out. It only works if core checks to filter out above chains during link tho. This says "only bother to map on a node" for this layer of the chain. If something is not a node, map should not work.
+			if((tmp = cat.lex) && !String.match(msg.get|| (put||'')['.'], tmp['.'] || tmp['#'] || tmp)){ return }
+			Gun.on.link(msg, cat);
+		}
+		var noop = function(){}, event = {stun: noop, off: noop}, u;
+	})(USE, './map');
+
+	;USE(function(module){
+		var Gun = USE('./index');
+		Gun.chain.set = function(item, cb, opt){
+			var gun = this, root = gun.back(-1), soul, tmp;
+			cb = cb || function(){};
+			opt = opt || {}; opt.item = opt.item || item;
+			if(soul = ((item||'')._||'')['#']){ (item = {})['#'] = soul } // check if node, make link.
+			if('string' == typeof (tmp = Gun.valid(item))){ return gun.get(soul = tmp).put(item, cb, opt) } // check if link
+			if(!Gun.is(item)){
+				if(Object.plain(item)){
+					item = root.get(soul = gun.back('opt.uuid')()).put(item);
+				}
+				return gun.get(soul || root.back('opt.uuid')(7)).put(item, cb, opt);
+			}
+			gun.put(function(go){
+				item.get(function(soul, o, msg){ // TODO: BUG! We no longer have this option? & go error not handled?
+					if(!soul){ return cb.call(gun, {err: Gun.log('Only a node can be linked! Not "' + msg.put + '"!')}) }
+					(tmp = {})[soul] = {'#': soul}; go(tmp);
+				},true);
+			})
+			return item;
+		}
+	})(USE, './set');
+
+	;USE(function(module){
+		USE('./shim');
+
+		function Mesh(root){
+			var mesh = function(){};
+			var opt = root.opt || {};
+			opt.log = opt.log || console.log;
+			opt.gap = opt.gap || opt.wait || 0;
+			opt.max = opt.max || (opt.memory? (opt.memory * 999 * 999) : 300000000) * 0.3;
+			opt.pack = opt.pack || (opt.max * 0.01 * 0.01);
+			opt.puff = opt.puff || 9; // IDEA: do a start/end benchmark, divide ops/result.
+			var puff = setTimeout.turn || setTimeout;
+			var parse = JSON.parseAsync || function(t,cb,r){ var u; try{ cb(u, JSON.parse(t,r)) }catch(e){ cb(e) } }
+			var json = JSON.stringifyAsync || function(v,cb,r,s){ var u; try{ cb(u, JSON.stringify(v,r,s)) }catch(e){ cb(e) } }
+
+			var dup = root.dup, dup_check = dup.check, dup_track = dup.track;
+
+			var ST = +new Date, LT = ST;
+
+			var hear = mesh.hear = function(raw, peer){
+				if(!raw){ return }
+				if(opt.max <= raw.length){ return mesh.say({dam: '!', err: "Message too big!"}, peer) }
+				if(mesh === this){
+					/*if('string' == typeof raw){ try{
+						var stat = console.STAT || {};
+						//console.log('HEAR:', peer.id, (raw||'').slice(0,250), ((raw||'').length / 1024 / 1024).toFixed(4));
+						
+						//console.log(setTimeout.turn.s.length, 'stacks', parseFloat((-(LT - (LT = +new Date))/1000).toFixed(3)), 'sec', parseFloat(((LT-ST)/1000 / 60).toFixed(1)), 'up', stat.peers||0, 'peers', stat.has||0, 'has', stat.memhused||0, stat.memused||0, stat.memax||0, 'heap mem max');
+					}catch(e){ console.log('DBG err', e) }}*/
+					hear.d += raw.length||0 ; ++hear.c } // STATS!
+				var S = peer.SH = +new Date;
+				var tmp = raw[0], msg;
+				//raw && raw.slice && console.log("hear:", ((peer.wire||'').headers||'').origin, raw.length, raw.slice && raw.slice(0,50)); //tc-iamunique-tc-package-ds1
+				if('[' === tmp){
+					parse(raw, function(err, msg){
+						if(err || !msg){ return mesh.say({dam: '!', err: "DAM JSON parse error."}, peer) }
+						console.STAT && console.STAT(+new Date, msg.length, '# on hear batch');
+						var P = opt.puff;
+						(function go(){
+							var S = +new Date;
+							var i = 0, m; while(i < P && (m = msg[i++])){ hear(m, peer) }
+							msg = msg.slice(i); // slicing after is faster than shifting during.
+							console.STAT && console.STAT(S, +new Date - S, 'hear loop');
+							flush(peer); // force send all synchronously batched acks.
+							if(!msg.length){ return }
+							puff(go, 0);
+						}());
+					});
+					raw = ''; // 
+					return;
+				}
+				if('{' === tmp || ((raw['#'] || Object.plain(raw)) && (msg = raw))){
+					if(msg){ return hear.one(msg, peer, S) }
+					parse(raw, function(err, msg){
+						if(err || !msg){ return mesh.say({dam: '!', err: "DAM JSON parse error."}, peer) }
+						hear.one(msg, peer, S);
+					});
+					return;
+				}
+			}
+			hear.one = function(msg, peer, S){ // S here is temporary! Undo.
+				var id, hash, tmp, ash, DBG;
+				if(msg.DBG){ msg.DBG = DBG = {DBG: msg.DBG} }
+				DBG && (DBG.h = S);
+				DBG && (DBG.hp = +new Date);
+				if(!(id = msg['#'])){ id = msg['#'] = String.random(9) }
+				if(tmp = dup_check(id)){ return }
+				// DAM logic:
+				if(!(hash = msg['##']) && false && u !== msg.put){ /*hash = msg['##'] = Type.obj.hash(msg.put)*/ } // disable hashing for now // TODO: impose warning/penalty instead (?)
+				if(hash && (tmp = msg['@'] || (msg.get && id)) && dup.check(ash = tmp+hash)){ return } // Imagine A <-> B <=> (C & D), C & D reply with same ACK but have different IDs, B can use hash to dedup. Or if a GET has a hash already, we shouldn't ACK if same.
+				(msg._ = function(){}).via = mesh.leap = peer;
+				if((tmp = msg['><']) && 'string' == typeof tmp){ tmp.slice(0,99).split(',').forEach(function(k){ this[k] = 1 }, (msg._).yo = {}) } // Peers already sent to, do not resend.
+				// DAM ^
+				if(tmp = msg.dam){
+					if(tmp = mesh.hear[tmp]){
+						tmp(msg, peer, root);
+					}
+					dup_track(id);
+					return;
+				}
+				var S = +new Date;
+				DBG && (DBG.is = S); peer.SI = id;
+				root.on('in', mesh.last = msg);
+				//ECHO = msg.put || ECHO; !(msg.ok !== -3740) && mesh.say({ok: -3740, put: ECHO, '@': msg['#']}, peer);
+				DBG && (DBG.hd = +new Date);
+				console.STAT && console.STAT(S, +new Date - S, msg.get? 'msg get' : msg.put? 'msg put' : 'msg');
+				(tmp = dup_track(id)).via = peer; // don't dedup message ID till after, cause GUN has internal dedup check.
+				if(msg.get){ tmp.it = msg }
+				if(ash){ dup_track(ash) } //dup.track(tmp+hash, true).it = it(msg);
+				mesh.leap = mesh.last = null; // warning! mesh.leap could be buggy.
+			}
+			var tomap = function(k,i,m){m(k,true)};
+			var noop = function(){};
+			hear.c = hear.d = 0;
+
+			;(function(){
+				var SMIA = 0;
+				var loop;
+				mesh.hash = function(msg, peer){ var h, s, t;
+					var S = +new Date;
+					json(msg.put, function hash(err, text){
+						var ss = (s || (s = t = text||'')).slice(0, 32768); // 1024 * 32
+					  h = String.hash(ss, h); s = s.slice(32768);
+					  if(s){ puff(hash, 0); return }
+						console.STAT && console.STAT(S, +new Date - S, 'say json+hash');
+					  msg._.$put = t;
+					  msg['##'] = h;
+					  say(msg, peer);
+					  delete msg._.$put;
+					}, sort);
+				}
+				function sort(k, v){ var tmp;
+					if(!(v instanceof Object)){ return v }
+					Object.keys(v).sort().forEach(sorta, {to: tmp = {}, on: v});
+					return tmp;
+				} function sorta(k){ this.to[k] = this.on[k] }
+
+				var say = mesh.say = function(msg, peer){ var tmp;
+					if((tmp = this) && (tmp = tmp.to) && tmp.next){ tmp.next(msg) } // compatible with middleware adapters.
+					if(!msg){ return false }
+					var id, hash, raw, ack = msg['@'];
+//if(opt.super && (!ack || !msg.put)){ return } // TODO: MANHATTAN STUB //OBVIOUSLY BUG! But squelch relay. // :( get only is 100%+ CPU usage :(
+					var meta = msg._||(msg._=function(){});
+					var DBG = msg.DBG, S = +new Date; meta.y = meta.y || S; if(!peer){ DBG && (DBG.y = S) }
+					if(!(id = msg['#'])){ id = msg['#'] = String.random(9) }
+					!loop && dup_track(id);//.it = it(msg); // track for 9 seconds, default. Earth<->Mars would need more! // always track, maybe move this to the 'after' logic if we split function.
+					if(msg.put && (msg.err || (dup.s[id]||'').err)){ return false } // TODO: in theory we should not be able to stun a message, but for now going to check if it can help network performance preventing invalid data to relay.
+					if(!(hash = msg['##']) && u !== msg.put && !meta.via && ack){ mesh.hash(msg, peer); return } // TODO: Should broadcasts be hashed?
+					if(!peer && ack){ peer = ((tmp = dup.s[ack]) && (tmp.via || ((tmp = tmp.it) && (tmp = tmp._) && tmp.via))) || ((tmp = mesh.last) && ack === tmp['#'] && mesh.leap) } // warning! mesh.leap could be buggy! mesh last check reduces this.
+					if(!peer && ack){ // still no peer, then ack daisy chain lost.
+						if(dup.s[ack]){ return } // in dups but no peer hints that this was ack to self, ignore.
+						console.STAT && console.STAT(+new Date, ++SMIA, 'total no peer to ack to');
+						return false;
+					} // TODO: Temporary? If ack via trace has been lost, acks will go to all peers, which trashes browser bandwidth. Not relaying the ack will force sender to ask for ack again. Note, this is technically wrong for mesh behavior.
+					if(!peer && mesh.way){ return mesh.way(msg) }
+					DBG && (DBG.yh = +new Date);
+					if(!(raw = meta.raw)){ mesh.raw(msg, peer); return }
+					DBG && (DBG.yr = +new Date);
+					if(!peer || !peer.id){
+						if(!Object.plain(peer || opt.peers)){ return false }
+						var S = +new Date;
+						var P = opt.puff, ps = opt.peers, pl = Object.keys(peer || opt.peers || {}); // TODO: .keys( is slow
+						console.STAT && console.STAT(S, +new Date - S, 'peer keys');
+						;(function go(){
+							var S = +new Date;
+							//Type.obj.map(peer || opt.peers, each); // in case peer is a peer list.
+							loop = 1; var wr = meta.raw; meta.raw = raw; // quick perf hack
+							var i = 0, p; while(i < 9 && (p = (pl||'')[i++])){
+								if(!(p = ps[p])){ continue }
+								say(msg, p);
+							}
+							meta.raw = wr; loop = 0;
+							pl = pl.slice(i); // slicing after is faster than shifting during.
+							console.STAT && console.STAT(S, +new Date - S, 'say loop');
+							if(!pl.length){ return }
+							puff(go, 0);
+							ack && dup_track(ack); // keep for later
+						}());
+						return;
+					}
+					// TODO: PERF: consider splitting function here, so say loops do less work.
+					if(!peer.wire && mesh.wire){ mesh.wire(peer) }
+					if(id === peer.last){ return } peer.last = id;  // was it just sent?
+					if(peer === meta.via){ return false } // don't send back to self.
+					if((tmp = meta.yo) && (tmp[peer.url] || tmp[peer.pid] || tmp[peer.id]) /*&& !o*/){ return false }
+					console.STAT && console.STAT(S, ((DBG||meta).yp = +new Date) - (meta.y || S), 'say prep');
+					!loop && ack && dup_track(ack); // streaming long responses needs to keep alive the ack.
+					if(peer.batch){
+						peer.tail = (tmp = peer.tail || 0) + raw.length;
+						if(peer.tail <= opt.pack){
+							peer.batch += (tmp?',':'')+raw;
+							return;
+						}
+						flush(peer);
+					}
+					peer.batch = '['; // Prevents double JSON!
+					var ST = +new Date;
+					setTimeout(function(){
+						console.STAT && console.STAT(ST, +new Date - ST, '0ms TO');
+						flush(peer);
+					}, opt.gap); // TODO: queuing/batching might be bad for low-latency video game performance! Allow opt out?
+					send(raw, peer);
+					console.STAT && (ack === peer.SI) && console.STAT(S, +new Date - peer.SH, 'say ack');
+				}
+				mesh.say.c = mesh.say.d = 0;
+				// TODO: this caused a out-of-memory crash!
+				mesh.raw = function(msg, peer){ // TODO: Clean this up / delete it / move logic out!
+					if(!msg){ return '' }
+					var meta = (msg._) || {}, put, tmp;
+					if(tmp = meta.raw){ return tmp }
+					if('string' == typeof msg){ return msg }
+					var hash = msg['##'], ack = msg['@'];
+					if(hash && ack){
+						if(!meta.via && dup_check(ack+hash)){ return false } // for our own out messages, memory & storage may ack the same thing, so dedup that. Tho if via another peer, we already tracked it upon hearing, so this will always trigger false positives, so don't do that!
+						if((tmp = (dup.s[ack]||'').it) || ((tmp = mesh.last) && ack === tmp['#'])){
+							if(hash === tmp['##']){ return false } // if ask has a matching hash, acking is optional.
+							if(!tmp['##']){ tmp['##'] = hash } // if none, add our hash to ask so anyone we relay to can dedup. // NOTE: May only check against 1st ack chunk, 2nd+ won't know and still stream back to relaying peers which may then dedup. Any way to fix this wasted bandwidth? I guess force rate limiting breaking change, that asking peer has to ask for next lexical chunk.
+						}
+					}
+					if(!msg.dam){
+						var i = 0, to = []; tmp = opt.peers;
+						for(var k in tmp){ var p = tmp[k]; // TODO: Make it up peers instead!
+							to.push(p.url || p.pid || p.id);
+							if(++i > 6){ break }
+						}
+						if(i > 1){ msg['><'] = to.join() } // TODO: BUG! This gets set regardless of peers sent to! Detect?
+					}
+					if(put = meta.$put){
+						tmp = {}; Object.keys(msg).forEach(function(k){ tmp[k] = msg[k] });
+						tmp.put = ':])([:';
+						json(tmp, function(err, raw){
+							if(err){ return } // TODO: Handle!!
+							var S = +new Date;
+							tmp = raw.indexOf('"put":":])([:"');
+							res(u, raw = raw.slice(0, tmp+6) + put + raw.slice(tmp + 14));
+							console.STAT && console.STAT(S, +new Date - S, 'say slice');
+						});
+						return;
+					}
+					json(msg, res);
+					function res(err, raw){
+						if(err){ return } // TODO: Handle!!
+						meta.raw = raw; //if(meta && (raw||'').length < (999 * 99)){ meta.raw = raw } // HNPERF: If string too big, don't keep in memory.
+						say(msg, peer);
+					}
+				}
+			}());
+
+			function flush(peer){
+				var tmp = peer.batch, t = 'string' == typeof tmp, l;
+				if(t){ tmp += ']' }// TODO: Prevent double JSON!
+				peer.batch = peer.tail = null;
+				if(!tmp){ return }
+				if(t? 3 > tmp.length : !tmp.length){ return } // TODO: ^
+				if(!t){try{tmp = (1 === tmp.length? tmp[0] : JSON.stringify(tmp));
+				}catch(e){return opt.log('DAM JSON stringify error', e)}}
+				if(!tmp){ return }
+				send(tmp, peer);
+			}
+			// for now - find better place later.
+			function send(raw, peer){ try{
+				//console.log('SAY:', peer.id, (raw||'').slice(0,250), ((raw||'').length / 1024 / 1024).toFixed(4));
+				var wire = peer.wire;
+				if(peer.say){
+					peer.say(raw);
+				} else
+				if(wire.send){
+					wire.send(raw);
+				}
+				mesh.say.d += raw.length||0; ++mesh.say.c; // STATS!
+			}catch(e){
+				(peer.queue = peer.queue || []).push(raw);
+			}}
+
+			mesh.hi = function(peer){
+				var tmp = peer.wire || {};
+				if(peer.id){
+					opt.peers[peer.url || peer.id] = peer;
+				} else {
+					tmp = peer.id = peer.id || String.random(9);
+					mesh.say({dam: '?', pid: root.opt.pid}, opt.peers[tmp] = peer);
+					delete dup.s[peer.last]; // IMPORTANT: see https://gun.eco/docs/DAM#self
+				}
+				peer.met = peer.met || +(new Date);
+				if(!tmp.hied){ root.on(tmp.hied = 'hi', peer) }
+				// @rogowski I need this here by default for now to fix go1dfish's bug
+				tmp = peer.queue; peer.queue = [];
+				setTimeout.each(tmp||[],function(msg){
+					send(msg, peer);
+				},0,9);
+				//Type.obj.native && Type.obj.native(); // dirty place to check if other JS polluted.
+			}
+			mesh.bye = function(peer){
+				root.on('bye', peer);
+				var tmp = +(new Date); tmp = (tmp - (peer.met||tmp));
+				mesh.bye.time = ((mesh.bye.time || tmp) + tmp) / 2;
+			}
+			mesh.hear['!'] = function(msg, peer){ opt.log('Error:', msg.err) }
+			mesh.hear['?'] = function(msg, peer){
+				if(msg.pid){
+					if(!peer.pid){ peer.pid = msg.pid }
+					if(msg['@']){ return }
+				}
+				mesh.say({dam: '?', pid: opt.pid, '@': msg['#']}, peer);
+				delete dup.s[peer.last]; // IMPORTANT: see https://gun.eco/docs/DAM#self
+			}
+
+			root.on('create', function(root){
+				root.opt.pid = root.opt.pid || String.random(9);
+				this.to.next(root);
+				root.on('out', mesh.say);
+			});
+
+			root.on('bye', function(peer, tmp){
+				peer = opt.peers[peer.id || peer] || peer;
+				this.to.next(peer);
+				peer.bye? peer.bye() : (tmp = peer.wire) && tmp.close && tmp.close();
+				delete opt.peers[peer.id];
+				peer.wire = null;
+			});
+
+			var gets = {};
+			root.on('bye', function(peer, tmp){ this.to.next(peer);
+				if(tmp = console.STAT){ tmp.peers = (tmp.peers || 0) - 1; }
+				if(!(tmp = peer.url)){ return } gets[tmp] = true;
+				setTimeout(function(){ delete gets[tmp] },opt.lack || 9000);
+			});
+			root.on('hi', function(peer, tmp){ this.to.next(peer);
+				if(tmp = console.STAT){ tmp.peers = (tmp.peers || 0) + 1 }
+				if(!(tmp = peer.url) || !gets[tmp]){ return } delete gets[tmp];
+				if(opt.super){ return } // temporary (?) until we have better fix/solution?
+				setTimeout.each(Object.keys(root.next), function(soul){ var node = root.next[soul]; // TODO: .keys( is slow
+					tmp = {}; tmp[soul] = root.graph[soul]; tmp = String.hash(tmp); // TODO: BUG! This is broken.
+					mesh.say({'##': tmp, get: {'#': soul}}, peer);
+				});
+			});
+
+			return mesh;
+		}
+	  var empty = {}, ok = true, u;
+
+	  try{ module.exports = Mesh }catch(e){}
+
+	})(USE, './mesh');
+
+	;USE(function(module){
+		var Gun = USE('../index');
+		Gun.Mesh = USE('./mesh');
+
+		// TODO: resync upon reconnect online/offline
+		//window.ononline = window.onoffline = function(){ console.log('online?', navigator.onLine) }
+
+		Gun.on('opt', function(root){
+			this.to.next(root);
+			if(root.once){ return }
+			var opt = root.opt;
+			if(false === opt.WebSocket){ return }
+
+			var env = Gun.window || {};
+			var websocket = opt.WebSocket || env.WebSocket || env.webkitWebSocket || env.mozWebSocket;
+			if(!websocket){ return }
+			opt.WebSocket = websocket;
+
+			var mesh = opt.mesh = opt.mesh || Gun.Mesh(root);
+
+			var wire = mesh.wire || opt.wire;
+			mesh.wire = opt.wire = open;
+			function open(peer){ try{
+				if(!peer || !peer.url){ return wire && wire(peer) }
+				var url = peer.url.replace(/^http/, 'ws');
+				var wire = peer.wire = new opt.WebSocket(url);
+				wire.onclose = function(){
+					opt.mesh.bye(peer);
+					reconnect(peer);
+				};
+				wire.onerror = function(error){
+					reconnect(peer);
+				};
+				wire.onopen = function(){
+					opt.mesh.hi(peer);
+				}
+				wire.onmessage = function(msg){
+					if(!msg){ return }
+					opt.mesh.hear(msg.data || msg, peer);
+				};
+				return wire;
+			}catch(e){}}
+
+			setTimeout(function(){ !opt.super && root.on('out', {dam:'hi'}) },1); // it can take a while to open a socket, so maybe no longer lazy load for perf reasons?
+
+			var wait = 2 * 999;
+			function reconnect(peer){
+				clearTimeout(peer.defer);
+				if(doc && peer.retry <= 0){ return }
+				peer.retry = (peer.retry || opt.retry+1 || 60) - ((-peer.tried + (peer.tried = +new Date) < wait*4)?1:0);
+				peer.defer = setTimeout(function to(){
+					if(doc && doc.hidden){ return setTimeout(to,wait) }
+					open(peer);
+				}, wait);
+			}
+			var doc = (''+u !== typeof document) && document;
+		});
+		var noop = function(){}, u;
+	})(USE, './websocket');
+
+	;USE(function(module){
+		if(typeof Gun === 'undefined'){ return }
+
+		var noop = function(){}, store, u;
+		try{store = (Gun.window||noop).localStorage}catch(e){}
+		if(!store){
+			Gun.log("Warning: No localStorage exists to persist data to!");
+			store = {setItem: function(k,v){this[k]=v}, removeItem: function(k){delete this[k]}, getItem: function(k){return this[k]}};
+		}
+		Gun.on('create', function lg(root){
+			this.to.next(root);
+			var opt = root.opt, graph = root.graph, acks = [], disk, to;
+			if(false === opt.localStorage){ return }
+			opt.prefix = opt.file || 'gun/';
+			try{ disk = lg[opt.prefix] = lg[opt.prefix] || JSON.parse(store.getItem(opt.prefix)) || {}; // TODO: Perf! This will block, should we care, since limited to 5MB anyways?
+			}catch(e){ disk = lg[opt.prefix] = {}; }
+
+			root.on('get', function(msg){
+				this.to.next(msg);
+				var lex = msg.get, soul, data, tmp, u;
+				if(!lex || !(soul = lex['#'])){ return }
+				data = disk[soul] || u;
+				if(data && (tmp = lex['.']) && !Object.plain(tmp)){ // pluck!
+					data = Gun.state.ify({}, tmp, Gun.state.is(data, tmp), data[tmp], soul);
+				}
+				//if(data){ (tmp = {})[soul] = data } // back into a graph.
+				//setTimeout(function(){
+				Gun.on.get.ack(msg, data); //root.on('in', {'@': msg['#'], put: tmp, lS:1});// || root.$});
+				//}, Math.random() * 10); // FOR TESTING PURPOSES!
+			});
+
+			root.on('put', function(msg){
+				this.to.next(msg); // remember to call next middleware adapter
+				var put = msg.put, soul = put['#'], key = put['.'], tmp; // pull data off wire envelope
+				disk[soul] = Gun.state.ify(disk[soul], key, put['>'], put[':'], soul); // merge into disk object
+				if(!msg['@']){ acks.push(msg['#']) } // then ack any non-ack write. // TODO: use batch id.
+				if(to){ return }
+				//flush();return;
+				to = setTimeout(flush, opt.wait || 1); // that gets saved as a whole to disk every 1ms
+			});
+			function flush(){
+				var err, ack = acks; clearTimeout(to); to = false; acks = [];
+				try{store.setItem(opt.prefix, JSON.stringify(disk));
+				}catch(e){
+					Gun.log((err = (e || "localStorage failure")) + " Consider using GUN's IndexedDB plugin for RAD for more storage space, https://gun.eco/docs/RAD#install");
+					root.on('localStorage:error', {err: err, get: opt.prefix, put: disk});
+				}
+				if(!err && !Object.empty(opt.peers)){ return } // only ack if there are no peers. // Switch this to probabilistic mode
+				setTimeout.each(ack, function(id){
+					root.on('in', {'@': id, err: err, ok: 0}); // localStorage isn't reliable, so make its `ok` code be a low number.
+				});
+			}
+		
+		});
+	})(USE, './localStorage');
+
+}());
+
+/* BELOW IS TEMPORARY FOR OLD INTERNAL COMPATIBILITY, THEY ARE IMMEDIATELY DEPRECATED AND WILL BE REMOVED IN NEXT VERSION */
+;(function(){
+	var u;
+	if(''+u == typeof Gun){ return }
+	var DEP = function(n){ console.log("Warning! Deprecated internal utility will break in next version:", n) }
+	// Generic javascript utilities.
+	var Type = Gun;
+	//Type.fns = Type.fn = {is: function(fn){ return (!!fn && fn instanceof Function) }}
+	Type.fn = Type.fn || {is: function(fn){ DEP('fn'); return (!!fn && 'function' == typeof fn) }}
+	Type.bi = Type.bi || {is: function(b){ DEP('bi');return (b instanceof Boolean || typeof b == 'boolean') }}
+	Type.num = Type.num || {is: function(n){ DEP('num'); return !list_is(n) && ((n - parseFloat(n) + 1) >= 0 || Infinity === n || -Infinity === n) }}
+	Type.text = Type.text || {is: function(t){ DEP('text'); return (typeof t == 'string') }}
+	Type.text.ify = Type.text.ify || function(t){ DEP('text.ify');
+		if(Type.text.is(t)){ return t }
+		if(typeof JSON !== "undefined"){ return JSON.stringify(t) }
+		return (t && t.toString)? t.toString() : t;
+	}
+	Type.text.random = Type.text.random || function(l, c){ DEP('text.random');
+		var s = '';
+		l = l || 24; // you are not going to make a 0 length random number, so no need to check type
+		c = c || '0123456789ABCDEFGHIJKLMNOPQRSTUVWXZabcdefghijklmnopqrstuvwxyz';
+		while(l > 0){ s += c.charAt(Math.floor(Math.random() * c.length)); l-- }
+		return s;
+	}
+	Type.text.match = Type.text.match || function(t, o){ var tmp, u; DEP('text.match');
+		if('string' !== typeof t){ return false }
+		if('string' == typeof o){ o = {'=': o} }
+		o = o || {};
+		tmp = (o['='] || o['*'] || o['>'] || o['<']);
+		if(t === tmp){ return true }
+		if(u !== o['=']){ return false }
+		tmp = (o['*'] || o['>'] || o['<']);
+		if(t.slice(0, (tmp||'').length) === tmp){ return true }
+		if(u !== o['*']){ return false }
+		if(u !== o['>'] && u !== o['<']){
+			return (t >= o['>'] && t <= o['<'])? true : false;
+		}
+		if(u !== o['>'] && t >= o['>']){ return true }
+		if(u !== o['<'] && t <= o['<']){ return true }
+		return false;
+	}
+	Type.text.hash = Type.text.hash || function(s, c){ // via SO
+		DEP('text.hash');
+		if(typeof s !== 'string'){ return }
+	  c = c || 0;
+	  if(!s.length){ return c }
+	  for(var i=0,l=s.length,n; i<l; ++i){
+	    n = s.charCodeAt(i);
+	    c = ((c<<5)-c)+n;
+	    c |= 0;
+	  }
+	  return c;
+	}
+	Type.list = Type.list || {is: function(l){ DEP('list'); return (l instanceof Array) }}
+	Type.list.slit = Type.list.slit || Array.prototype.slice;
+	Type.list.sort = Type.list.sort || function(k){ // creates a new sort function based off some key
+		DEP('list.sort');
+		return function(A,B){
+			if(!A || !B){ return 0 } A = A[k]; B = B[k];
+			if(A < B){ return -1 }else if(A > B){ return 1 }
+			else { return 0 }
+		}
+	}
+	Type.list.map = Type.list.map || function(l, c, _){ DEP('list.map'); return obj_map(l, c, _) }
+	Type.list.index = 1; // change this to 0 if you want non-logical, non-mathematical, non-matrix, non-convenient array notation
+	Type.obj = Type.boj || {is: function(o){ DEP('obj'); return o? (o instanceof Object && o.constructor === Object) || Object.prototype.toString.call(o).match(/^\[object (\w+)\]$/)[1] === 'Object' : false }}
+	Type.obj.put = Type.obj.put || function(o, k, v){ DEP('obj.put'); return (o||{})[k] = v, o }
+	Type.obj.has = Type.obj.has || function(o, k){ DEP('obj.has'); return o && Object.prototype.hasOwnProperty.call(o, k) }
+	Type.obj.del = Type.obj.del || function(o, k){ DEP('obj.del'); 
+		if(!o){ return }
+		o[k] = null;
+		delete o[k];
+		return o;
+	}
+	Type.obj.as = Type.obj.as || function(o, k, v, u){ DEP('obj.as'); return o[k] = o[k] || (u === v? {} : v) }
+	Type.obj.ify = Type.obj.ify || function(o){ DEP('obj.ify'); 
+		if(obj_is(o)){ return o }
+		try{o = JSON.parse(o);
+		}catch(e){o={}};
+		return o;
+	}
+	;(function(){ var u;
+		function map(v,k){
+			if(obj_has(this,k) && u !== this[k]){ return }
+			this[k] = v;
+		}
+		Type.obj.to = Type.obj.to || function(from, to){ DEP('obj.to'); 
+			to = to || {};
+			obj_map(from, map, to);
+			return to;
+		}
+	}());
+	Type.obj.copy = Type.obj.copy || function(o){ DEP('obj.copy'); // because http://web.archive.org/web/20140328224025/http://jsperf.com/cloning-an-object/2
+		return !o? o : JSON.parse(JSON.stringify(o)); // is shockingly faster than anything else, and our data has to be a subset of JSON anyways!
+	}
+	;(function(){
+		function empty(v,i){ var n = this.n, u;
+			if(n && (i === n || (obj_is(n) && obj_has(n, i)))){ return }
+			if(u !== i){ return true }
+		}
+		Type.obj.empty = Type.obj.empty || function(o, n){ DEP('obj.empty'); 
+			if(!o){ return true }
+			return obj_map(o,empty,{n:n})? false : true;
+		}
+	}());
+	;(function(){
+		function t(k,v){
+			if(2 === arguments.length){
+				t.r = t.r || {};
+				t.r[k] = v;
+				return;
+			} t.r = t.r || [];
+			t.r.push(k);
+		};
+		var keys = Object.keys, map, u;
+		Object.keys = Object.keys || function(o){ return map(o, function(v,k,t){t(k)}) }
+		Type.obj.map = map = Type.obj.map || function(l, c, _){ DEP('obj.map'); 
+			var u, i = 0, x, r, ll, lle, f = 'function' == typeof c;
+			t.r = u;
+			if(keys && obj_is(l)){
+				ll = keys(l); lle = true;
+			}
+			_ = _ || {};
+			if(list_is(l) || ll){
+				x = (ll || l).length;
+				for(;i < x; i++){
+					var ii = (i + Type.list.index);
+					if(f){
+						r = lle? c.call(_, l[ll[i]], ll[i], t) : c.call(_, l[i], ii, t);
+						if(r !== u){ return r }
+					} else {
+						//if(Type.test.is(c,l[i])){ return ii } // should implement deep equality testing!
+						if(c === l[lle? ll[i] : i]){ return ll? ll[i] : ii } // use this for now
+					}
+				}
+			} else {
+				for(i in l){
+					if(f){
+						if(obj_has(l,i)){
+							r = _? c.call(_, l[i], i, t) : c(l[i], i, t);
+							if(r !== u){ return r }
+						}
+					} else {
+						//if(a.test.is(c,l[i])){ return i } // should implement deep equality testing!
+						if(c === l[i]){ return i } // use this for now
+					}
+				}
+			}
+			return f? t.r : Type.list.index? 0 : -1;
+		}
+	}());
+	Type.time = Type.time || {};
+	Type.time.is = Type.time.is || function(t){ DEP('time'); return t? t instanceof Date : (+new Date().getTime()) }
+
+	var fn_is = Type.fn.is;
+	var list_is = Type.list.is;
+	var obj = Type.obj, obj_is = obj.is, obj_has = obj.has, obj_map = obj.map;
+
+	var Val = {};
+	Val.is = function(v){ DEP('val.is'); // Valid values are a subset of JSON: null, binary, number (!Infinity), text, or a soul relation. Arrays need special algorithms to handle concurrency, so they are not supported directly. Use an extension that supports them if needed but research their problems first.
+		if(v === u){ return false }
+		if(v === null){ return true } // "deletes", nulling out keys.
+		if(v === Infinity){ return false } // we want this to be, but JSON does not support it, sad face.
+		if(text_is(v) // by "text" we mean strings.
+		|| bi_is(v) // by "binary" we mean boolean.
+		|| num_is(v)){ // by "number" we mean integers or decimals.
+			return true; // simple values are valid.
+		}
+		return Val.link.is(v) || false; // is the value a soul relation? Then it is valid and return it. If not, everything else remaining is an invalid data type. Custom extensions can be built on top of these primitives to support other types.
+	}
+	Val.link = Val.rel = {_: '#'};
+	;(function(){
+		Val.link.is = function(v){ DEP('val.link.is'); // this defines whether an object is a soul relation or not, they look like this: {'#': 'UUID'}
+			if(v && v[rel_] && !v._ && obj_is(v)){ // must be an object.
+				var o = {};
+				obj_map(v, map, o);
+				if(o.id){ // a valid id was found.
+					return o.id; // yay! Return it.
+				}
+			}
+			return false; // the value was not a valid soul relation.
+		}
+		function map(s, k){ var o = this; // map over the object...
+			if(o.id){ return o.id = false } // if ID is already defined AND we're still looping through the object, it is considered invalid.
+			if(k == rel_ && text_is(s)){ // the key should be '#' and have a text value.
+				o.id = s; // we found the soul!
+			} else {
+				return o.id = false; // if there exists anything else on the object that isn't the soul, then it is considered invalid.
+			}
+		}
+	}());
+	Val.link.ify = function(t){ DEP('val.link.ify'); return obj_put({}, rel_, t) } // convert a soul into a relation and return it.
+	Type.obj.has._ = '.';
+	var rel_ = Val.link._, u;
+	var bi_is = Type.bi.is;
+	var num_is = Type.num.is;
+	var text_is = Type.text.is;
+	var obj = Type.obj, obj_is = obj.is, obj_put = obj.put, obj_map = obj.map;
+
+	Type.val = Type.val || Val;
+
+	var Node = {_: '_'};
+	Node.soul = function(n, o){ DEP('node.soul'); return (n && n._ && n._[o || soul_]) } // convenience function to check to see if there is a soul on a node and return it.
+	Node.soul.ify = function(n, o){ DEP('node.soul.ify'); // put a soul on an object.
+		o = (typeof o === 'string')? {soul: o} : o || {};
+		n = n || {}; // make sure it exists.
+		n._ = n._ || {}; // make sure meta exists.
+		n._[soul_] = o.soul || n._[soul_] || text_random(); // put the soul on it.
+		return n;
+	}
+	Node.soul._ = Val.link._;
+	;(function(){
+		Node.is = function(n, cb, as){ DEP('node.is'); var s; // checks to see if an object is a valid node.
+			if(!obj_is(n)){ return false } // must be an object.
+			if(s = Node.soul(n)){ // must have a soul on it.
+				return !obj_map(n, map, {as:as,cb:cb,s:s,n:n});
+			}
+			return false; // nope! This was not a valid node.
+		}
+		function map(v, k){ // we invert this because the way we check for this is via a negation.
+			if(k === Node._){ return } // skip over the metadata.
+			if(!Val.is(v)){ return true } // it is true that this is an invalid node.
+			if(this.cb){ this.cb.call(this.as, v, k, this.n, this.s) } // optionally callback each key/value.
+		}
+	}());
+	;(function(){
+		Node.ify = function(obj, o, as){ DEP('node.ify'); // returns a node from a shallow object.
+			if(!o){ o = {} }
+			else if(typeof o === 'string'){ o = {soul: o} }
+			else if('function' == typeof o){ o = {map: o} }
+			if(o.map){ o.node = o.map.call(as, obj, u, o.node || {}) }
+			if(o.node = Node.soul.ify(o.node || {}, o)){
+				obj_map(obj, map, {o:o,as:as});
+			}
+			return o.node; // This will only be a valid node if the object wasn't already deep!
+		}
+		function map(v, k){ var o = this.o, tmp, u; // iterate over each key/value.
+			if(o.map){
+				tmp = o.map.call(this.as, v, ''+k, o.node);
+				if(u === tmp){
+					obj_del(o.node, k);
+				} else
+				if(o.node){ o.node[k] = tmp }
+				return;
+			}
+			if(Val.is(v)){
+				o.node[k] = v;
+			}
+		}
+	}());
+	var obj = Type.obj, obj_is = obj.is, obj_del = obj.del, obj_map = obj.map;
+	var text = Type.text, text_random = text.random;
+	var soul_ = Node.soul._;
+	var u;
+	Type.node = Type.node || Node;
+
+	var State = Type.state;
+	State.lex = function(){ DEP('state.lex'); return State().toString(36).replace('.','') }
+	State.to = function(from, k, to){ DEP('state.to'); 
+		var val = (from||{})[k];
+		if(obj_is(val)){
+			val = obj_copy(val);
+		}
+		return State.ify(to, k, State.is(from, k), val, Node.soul(from));
+	}
+	;(function(){
+		State.map = function(cb, s, as){ DEP('state.map'); var u; // for use with Node.ify
+			var o = obj_is(o = cb || s)? o : null;
+			cb = fn_is(cb = cb || s)? cb : null;
+			if(o && !cb){
+				s = num_is(s)? s : State();
+				o[N_] = o[N_] || {};
+				obj_map(o, map, {o:o,s:s});
+				return o;
+			}
+			as = as || obj_is(s)? s : u;
+			s = num_is(s)? s : State();
+			return function(v, k, o, opt){
+				if(!cb){
+					map.call({o: o, s: s}, v,k);
+					return v;
+				}
+				cb.call(as || this || {}, v, k, o, opt);
+				if(obj_has(o,k) && u === o[k]){ return }
+				map.call({o: o, s: s}, v,k);
+			}
+		}
+		function map(v,k){
+			if(N_ === k){ return }
+			State.ify(this.o, k, this.s) ;
+		}
+	}());
+	var obj = Type.obj, obj_as = obj.as, obj_has = obj.has, obj_is = obj.is, obj_map = obj.map, obj_copy = obj.copy;
+	var num = Type.num, num_is = num.is;
+	var fn = Type.fn, fn_is = fn.is;
+	var N_ = Node._, u;
+
+	var Graph = {};
+	;(function(){
+		Graph.is = function(g, cb, fn, as){ DEP('graph.is'); // checks to see if an object is a valid graph.
+			if(!g || !obj_is(g) || obj_empty(g)){ return false } // must be an object.
+			return !obj_map(g, map, {cb:cb,fn:fn,as:as}); // makes sure it wasn't an empty object.
+		}
+		function map(n, s){ // we invert this because the way'? we check for this is via a negation.
+			if(!n || s !== Node.soul(n) || !Node.is(n, this.fn, this.as)){ return true } // it is true that this is an invalid graph.
+			if(!this.cb){ return }
+			nf.n = n; nf.as = this.as; // sequential race conditions aren't races.
+			this.cb.call(nf.as, n, s, nf);
+		}
+		function nf(fn){ // optional callback for each node.
+			if(fn){ Node.is(nf.n, fn, nf.as) } // where we then have an optional callback for each key/value.
+		}
+	}());
+	;(function(){
+		Graph.ify = function(obj, env, as){ DEP('graph.ify'); 
+			var at = {path: [], obj: obj};
+			if(!env){
+				env = {};
+			} else
+			if(typeof env === 'string'){
+				env = {soul: env};
+			} else
+			if('function' == typeof env){
+				env.map = env;
+			}
+			if(typeof as === 'string'){
+				env.soul = env.soul || as;
+				as = u;
+			}
+			if(env.soul){
+				at.link = Val.link.ify(env.soul);
+			}
+			env.shell = (as||{}).shell;
+			env.graph = env.graph || {};
+			env.seen = env.seen || [];
+			env.as = env.as || as;
+			node(env, at);
+			env.root = at.node;
+			return env.graph;
+		}
+		function node(env, at){ var tmp;
+			if(tmp = seen(env, at)){ return tmp }
+			at.env = env;
+			at.soul = soul;
+			if(Node.ify(at.obj, map, at)){
+				at.link = at.link || Val.link.ify(Node.soul(at.node));
+				if(at.obj !== env.shell){
+					env.graph[Val.link.is(at.link)] = at.node;
+				}
+			}
+			return at;
+		}
+		function map(v,k,n){
+			var at = this, env = at.env, is, tmp;
+			if(Node._ === k && obj_has(v,Val.link._)){
+				return n._; // TODO: Bug?
+			}
+			if(!(is = valid(v,k,n, at,env))){ return }
+			if(!k){
+				at.node = at.node || n || {};
+				if(obj_has(v, Node._) && Node.soul(v)){ // ? for safety ?
+					at.node._ = obj_copy(v._);
+				}
+				at.node = Node.soul.ify(at.node, Val.link.is(at.link));
+				at.link = at.link || Val.link.ify(Node.soul(at.node));
+			}
+			if(tmp = env.map){
+				tmp.call(env.as || {}, v,k,n, at);
+				if(obj_has(n,k)){
+					v = n[k];
+					if(u === v){
+						obj_del(n, k);
+						return;
+					}
+					if(!(is = valid(v,k,n, at,env))){ return }
+				}
+			}
+			if(!k){ return at.node }
+			if(true === is){
+				return v;
+			}
+			tmp = node(env, {obj: v, path: at.path.concat(k)});
+			if(!tmp.node){ return }
+			return tmp.link; //{'#': Node.soul(tmp.node)};
+		}
+		function soul(id){ var at = this;
+			var prev = Val.link.is(at.link), graph = at.env.graph;
+			at.link = at.link || Val.link.ify(id);
+			at.link[Val.link._] = id;
+			if(at.node && at.node[Node._]){
+				at.node[Node._][Val.link._] = id;
+			}
+			if(obj_has(graph, prev)){
+				graph[id] = graph[prev];
+				obj_del(graph, prev);
+			}
+		}
+		function valid(v,k,n, at,env){ var tmp;
+			if(Val.is(v)){ return true }
+			if(obj_is(v)){ return 1 }
+			if(tmp = env.invalid){
+				v = tmp.call(env.as || {}, v,k,n);
+				return valid(v,k,n, at,env);
+			}
+			env.err = "Invalid value at '" + at.path.concat(k).join('.') + "'!";
+			if(Type.list.is(v)){ env.err += " Use `.set(item)` instead of an Array." }
+		}
+		function seen(env, at){
+			var arr = env.seen, i = arr.length, has;
+			while(i--){ has = arr[i];
+				if(at.obj === has.obj){ return has }
+			}
+			arr.push(at);
+		}
+	}());
+	Graph.node = function(node){ DEP('graph.node'); 
+		var soul = Node.soul(node);
+		if(!soul){ return }
+		return obj_put({}, soul, node);
+	}
+	;(function(){
+		Graph.to = function(graph, root, opt){ DEP('graph.to'); 
+			if(!graph){ return }
+			var obj = {};
+			opt = opt || {seen: {}};
+			obj_map(graph[root], map, {obj:obj, graph: graph, opt: opt});
+			return obj;
+		}
+		function map(v,k){ var tmp, obj;
+			if(Node._ === k){
+				if(obj_empty(v, Val.link._)){
+					return;
+				}
+				this.obj[k] = obj_copy(v);
+				return;
+			}
+			if(!(tmp = Val.link.is(v))){
+				this.obj[k] = v;
+				return;
+			}
+			if(obj = this.opt.seen[tmp]){
+				this.obj[k] = obj;
+				return;
+			}
+			this.obj[k] = this.opt.seen[tmp] = Graph.to(this.graph, tmp, this.opt);
+		}
+	}());
+	var fn_is = Type.fn.is;
+	var obj = Type.obj, obj_is = obj.is, obj_del = obj.del, obj_has = obj.has, obj_empty = obj.empty, obj_put = obj.put, obj_map = obj.map, obj_copy = obj.copy;
+	var u;
+	Type.graph = Type.graph || Graph;
+}());
